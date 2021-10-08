@@ -103,13 +103,13 @@ const Home = ({randomContributors}) => {
                 pour vous !
               </FeatureIcon>
               <FeatureIcon icon="lighteningBolt">
-                La cr&eacute;ation d&apos;application Blitz comprend d&eacute;jà toute{" "}
+                La cr&eacute;ation d&apos;application Blitz comprend d&eacute;j&agrave; toute{" "}
                 <strong>la mise en place et la configuration barbante </strong>
                 telle que ESLint, Prettier, Jest, l&apos;enregistrement, l&apos;authentification et
-                la r&eacute;initialisation de mot de passes !
+                la r&eacute;initialisation de mot de passe !
               </FeatureIcon>
               <FeatureIcon icon="graphUp">
-                Blitz repose sur <strong>une structure et des conventions</strong> qui facilient le
+                Blitz repose sur <strong>une structure et des normes</strong> qui facilitent le
                 d&eacute;veloppement telles que la structure de l&apos;arborescence de fichiers, les
                 conventions pour le routage, ou celles pour l&apos;authentification, ... tout en
                 restant extrêmement flexible.
@@ -143,7 +143,7 @@ const Home = ({randomContributors}) => {
                 />
                 <Scrollbar className="lg:hidden" thumbHeight="4px">
                   <div className="grid pb-4 ml-6 features-grid lg:gap-y-14">
-                    <Feature title="Compatible Fullstack et Monolithique">
+                    <Feature title="Fullstack compatible et Monolithique">
                       <p>
                         Blitz inclut tout, de la base de donn&eacute;es au frontend, en une unique
                         application. Ne d&eacute;veloppez et d&eacute;ployez qu&apos;une seule
@@ -165,16 +165,16 @@ const Home = ({randomContributors}) => {
                     </Feature>
                     <Feature title="Flexible">
                       <p>
-                        Les convention et la structure par d&eacute;faut conviennent parfaitement
-                        &agrave; la plus part des applications. Mais rien de vous emp&ecirc;che de
+                        Les conventions et la structure par d&eacute;faut conviennent parfaitement
+                        &agrave; la plupart des applications. Mais rien ne vous emp&ecirc;che de
                         sortir des sentiers battus.
                       </p>
                       <p>
-                        Une Grande compatibilit&eacute;e : Par exemple, nous n&apos;imposons pas les
+                        Une grande compatibilit&eacute;e : par exemple, nous n&apos;imposons pas les
                         blioth&egrave;ques de style ou de formulaire.
                       </p>
                     </Feature>
-                    <Feature title="Convention plut&ocirc; que Configuration">
+                    <Feature title="Convention plut&ocirc;t que Configuration">
                       <p>
                         Blitz prend en charge la mise en place et la configuration pour vous. La
                         structure et l&apos;architecture de projet permet de facilement passer
@@ -188,7 +188,7 @@ const Home = ({randomContributors}) => {
                       </p>
                       <p>
                         Facile &agrave; maintenir sur la dur&eacute;e en terme de : lignes de code,
-                        de nombre de developpeurs, et d&apos;&eacute;cution du code.
+                        de nombre de d&eacute;veloppeurs, et d&apos;ex&eacute;cution du code.
                       </p>
                     </Feature>
                     <Feature title="Stable">
@@ -260,10 +260,10 @@ const Home = ({randomContributors}) => {
                 <div className="z-10 flex flex-col justify-between space-y-6 lg:justify-end">
                   <div className="flex flex-col space-y-6 lg:h-auto lg:text-transparent text-off-white">
                     <p className="lg:bg-gradient-to-r lg:from-blue-gradient-white lg:to-blue-gradient-light-blue lg:bg-clip-text">
-                      Notre communaut&eacute; est acceuillante, s&e,diverse, inclusive et sympa !{" "}
+                      Notre communaut&eacute; est acceuillante, diverse, inclusive et sympa !{" "}
                       <br className="hidden lg:block" />
                       Les membres des communaut&eacute;s LGBTQ+, les femmes, et les
-                      minorit&eacute;es &eacute;thniques sont les bien venus.
+                      minorit&eacute;es ethniques sont les bienvenus.
                     </p>
                     <p className="lg:bg-gradient-to-r lg:from-blue-gradient-white lg:to-blue-gradient-light-blue lg:bg-clip-text">
                       Pensez &agrave; lire notre{" "}
@@ -323,7 +323,7 @@ const Home = ({randomContributors}) => {
             <div className="relative px-6 mx-auto my-6 space-y-12 text-white xl:my-0 max-w-7xl xl:space-y-36">
               <h2 className="text-3xl font-semibold lg:text-transparent lg:bg-clip-text lg:bg-gradient-to-r lg:from-blue-gradient-white lg:to-blue-gradient-light-blue xl:text-5xl">
                 De bout en bout, <br className="hidden xl:block" />
-                de la base de donn&eacute;es,
+                de la base de donn&eacute;es
                 <br className="hidden xl:block" />
                 &agrave; l&apos;interface
               </h2>
@@ -352,20 +352,20 @@ const Home = ({randomContributors}) => {
                 <FeatureIconTitle icon="plugin" title="Architecture Backend">
                   Blitz est adapt&eacute; aux t&acirc;ches intensives c&ocirc;t&eacute; serveur
                   telles que l&apos;envoi d&apos;emails, les cron jobs, le calcul en t&acirc;che de
-                  fond, la g&eacute;n&eacute;ration de PDFs, etc. Nous avons aujourd&pos;hui peu de
+                  fond, la g&eacute;n&eacute;ration de PDFs, etc. Nous avons aujourd&apos;hui peu de
                   guides pour ce type t&acirc;ches mais nous travaillons &agrave; &eacute;tailler
                   nos patterns et ajouter plus de documentation.
                 </FeatureIconTitle>
                 <FeatureIconTitle icon="typescript" title="TypeScript Nativement Support&eacute;">
-                  Blitz est cod&eacute; en TypeScript et la couche de donn&eacutees de Blitz est
+                  Blitz est cod&eacute; en TypeScript et la couche de donn&eacute;es de Blitz est
                   enti&egrave;rement typesafe de bout en bout. Tous les types sont
-                  compl&egrave;temente statiques sans besoin de processus g&eacute;n&eacute;ration
+                  compl&egrave;tement statiques sans besoin de processus g&eacute;n&eacute;ration
                   tiers.
                 </FeatureIconTitle>
                 <FeatureIconTitle icon="scaffolding" title="Aide au Code">
                   Nous n&apos;en sommes qu&apos;au d&eacute;but mais l&apos;aide au code de Blitz
                   est en passe de devenir extr&ecirc;mement puissante, &agrave; la fois pour
-                  prototyper et pour cr&eacute;&eacute; des applications solides. Il sera possible
+                  prototyper et pour cr&eacute;er des applications solides. Il sera possible
                   d&apos;override n&apos;importe quel template et de les adapter &agrave; chacun de
                   vos projets.
                 </FeatureIconTitle>
@@ -390,10 +390,10 @@ const Home = ({randomContributors}) => {
                   Nos Parrains
                 </h2>
                 <p className="text-lg xl:text-xl">
-                  Votre aide financi&egrave;re permet &agrave; Blitz de continuer d&apos;&ecirc;tre
-                  d&eacute;velop&eacute; et maintenu !
+                  Votre aide financi&egrave;re permet &agrave; Blitz d&apos;&ecirc;tre
+                  d&eacute;velopp&eacute; et maintenu continuellement !
                   <br className="hidden lg:block" />
-                  Nous avons acceptons les parrainages &agrave; partir de $5/mois.
+                  Nous acceptons les parrainages &agrave; partir de $5/mois.
                 </p>
                 <div>
                   <ButtonLink
@@ -422,7 +422,7 @@ const Home = ({randomContributors}) => {
                   href="/docs/get-started"
                   className="w-full text-lg py-18 rounded-t-2xl md:rounded-tr-none"
                 >
-                  &Eacute;ssayer Blitz en 5 minutes
+                  Essayer Blitz en 5 minutes
                 </ButtonLink>
                 <ButtonLink
                   target="_blank"
