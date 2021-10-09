@@ -145,9 +145,10 @@ const Home = ({randomContributors}) => {
                   <div className="grid pb-4 ml-6 features-grid lg:gap-y-14">
                     <Feature title="Fullstack compatible et Monolithique">
                       <p>
-                        Blitz inclut tout, de la base de donn&eacute;es au frontend, en une unique
-                        application. Ne d&eacute;veloppez et d&eacute;ployez qu&apos;une seule
-                        application.
+                        Avec Blitz, ne d&eacute;veloppez et ne d&eacute;ployez qu&apos;une seule
+                        application contenant tout, de la base de donn&eacute;es au
+                        <br className="hidden lg:block" />
+                        frontend !
                       </p>
                       <p>D&eacute;ployable sur serveur ou en &quot;serverless&quot;.</p>
                     </Feature>
@@ -171,13 +172,13 @@ const Home = ({randomContributors}) => {
                       </p>
                       <p>
                         Une grande compatibilit&eacute;e : par exemple, nous n&apos;imposons pas les
-                        blioth&egrave;ques de style ou de formulaire.
+                        biblioth&egrave;ques de style ou de formulaire.
                       </p>
                     </Feature>
                     <Feature title="Convention plut&ocirc;t que Configuration">
                       <p>
                         Blitz prend en charge la mise en place et la configuration pour vous. La
-                        structure et l&apos;architecture de projet permet de facilement passer
+                        structure et l&apos;architecture de projet permettent de facilement passer
                         d&apos;une application Blitz &agrave; une autre.
                       </p>
                     </Feature>
@@ -194,7 +195,7 @@ const Home = ({randomContributors}) => {
                     <Feature title="Stable">
                       <p>
                         Une fois la version 1.0 atteinte, nous passerons &agrave; un cycle de
-                        livraison classique avec plusieurs phases tels que &quot;stable&quot;,
+                        livraison classique avec plusieurs phases telles que &quot;stable&quot;,
                         &quot;LTS&quot;, et &quot;b&ecirc;ta&quot;.
                       </p>
                       <p>Pour cela, nous nous inspirons des livraisons de Ember.</p>
@@ -332,17 +333,17 @@ const Home = ({randomContributors}) => {
                   variant="features-right"
                   className="hidden xl:block xl:-top-40 xl:-right-52"
                 />
-                <FeatureIconTitle icon="thumbsUp" title="Authentification & Authorisation">
+                <FeatureIconTitle icon="thumbsUp" title="Authentification & Autorisation">
                   L&apos; authentification par d&eacute;faut est tr&egrave;s facile
                   d&apos;utilisation et tr&egrave;s s&eacute;curis&eacute;e. Elle fonctionne avec
-                  n&apos;importe quel fournisseur d&apos;identit&eacute;, telles que les solutions
+                  n&apos;importe quel fournisseur d&apos;identit&eacute;, tel que les solutions
                   auto-h&eacute;berg&eacute;es reposant sur un couple d&apos;identifiant-mot de
                   passe ou les solutions tierce-partie telles que Autho0.
                 </FeatureIconTitle>
-                <FeatureIconTitle icon="database" title="Base de donn&eacute;e Agnostique">
-                  Vous pouvez utiliser la base de donn&eacute;e que vous souhaitez. Prisma 2 est le
+                <FeatureIconTitle icon="database" title="Base de donn&eacute;es Agnostique">
+                  Vous pouvez utiliser la base de donn&eacute;es que vous souhaitez. Prisma 2 est le
                   client par d&eacute;faut mais vous pouvez le remplacer par n&apos;importe quel
-                  autre comme Fauna ou DynamoDB.
+                  autre client comme Fauna ou DynamoDB.
                 </FeatureIconTitle>
                 <FeatureIconTitle icon="fileCode" title="Recettes">
                   Une seule commande pour installer le code et/ou les paquets dans votre application
@@ -353,8 +354,8 @@ const Home = ({randomContributors}) => {
                   Blitz est adapt&eacute; aux t&acirc;ches intensives c&ocirc;t&eacute; serveur
                   telles que l&apos;envoi d&apos;emails, les cron jobs, le calcul en t&acirc;che de
                   fond, la g&eacute;n&eacute;ration de PDFs, etc. Nous avons aujourd&apos;hui peu de
-                  guides pour ce type t&acirc;ches mais nous travaillons &agrave; &eacute;tailler
-                  nos patterns et ajouter plus de documentation.
+                  guides pour ce type de t&acirc;ches mais nous travaillons &agrave; &eacute;tailler
+                  nos patterns et &agrave; ajouter plus de documentation.
                 </FeatureIconTitle>
                 <FeatureIconTitle icon="typescript" title="TypeScript Nativement Support&eacute;">
                   Blitz est cod&eacute; en TypeScript et la couche de donn&eacute;es de Blitz est
