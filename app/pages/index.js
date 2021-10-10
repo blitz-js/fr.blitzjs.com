@@ -171,7 +171,7 @@ const Home = ({randomContributors}) => {
                         sortir des sentiers battus.
                       </p>
                       <p>
-                        Une grande compatibilit&eacute;e : par exemple, nous n&apos;imposons pas les
+                        Une grande compatibilit&eacute;e : par exemple, nous n&apos;imposons pas de
                         biblioth&egrave;ques de style ou de formulaire.
                       </p>
                     </Feature>
@@ -335,10 +335,10 @@ const Home = ({randomContributors}) => {
                 />
                 <FeatureIconTitle icon="thumbsUp" title="Authentification & Autorisation">
                   L&apos; authentification par d&eacute;faut est tr&egrave;s facile
-                  d&apos;utilisation et tr&egrave;s s&eacute;curis&eacute;e. Elle fonctionne avec
-                  n&apos;importe quel fournisseur d&apos;identit&eacute;, tel que les solutions
+                  d&apos;utilisation et tr&egrave;s s&eacute;curis&eacute;e. Elle est compatibles
+                  avec de nombreux fournisseurs d&apos;identit&eacute;, notamment les solutions
                   auto-h&eacute;berg&eacute;es reposant sur un couple d&apos;identifiant-mot de
-                  passe ou les solutions tierce-partie telles que Autho0.
+                  passe ou les solutions tierce telles que Auth0.
                 </FeatureIconTitle>
                 <FeatureIconTitle icon="database" title="Base de donn&eacute;es Agnostique">
                   Vous pouvez utiliser la base de donn&eacute;es que vous souhaitez. Prisma 2 est le
@@ -352,7 +352,7 @@ const Home = ({randomContributors}) => {
                 </FeatureIconTitle>
                 <FeatureIconTitle icon="plugin" title="Architecture Backend">
                   Blitz est adapt&eacute; aux t&acirc;ches intensives c&ocirc;t&eacute; serveur
-                  telles que l&apos;envoi d&apos;emails, les cron jobs, le calcul en t&acirc;che de
+                  comprenant l&apos;envoi d&apos;emails, les cron jobs, le calcul en t&acirc;che de
                   fond, la g&eacute;n&eacute;ration de PDFs, etc. Nous avons aujourd&apos;hui peu de
                   guides pour ce type de t&acirc;ches mais nous travaillons &agrave; &eacute;tailler
                   nos patterns et &agrave; ajouter plus de documentation.
