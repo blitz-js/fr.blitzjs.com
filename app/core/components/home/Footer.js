@@ -24,8 +24,8 @@ export function Footer({className, hasDarkMode}) {
         <div className="grid px-6 mx-auto max-w-7xl lg:grid-cols-3 gap-x-24 my-14 lg:mt-24 lg:mb-12 gap-y-7">
           <div className="flex flex-col justify-between space-y-7">
             <p className="text-lg font-semibold">
-              Want to receive the latest news and updates from the Blitz team? Sign up for our
-              newsletter!
+              Abonnez vous &agrave; notre newsletter pour vous tenir au courant des derni&egrave;res
+              nouveaut&eacute;s de Blitz !
             </p>
             <div className="pb-5 lg:pb-0">
               <NewsletterForm hasDarkMode={hasDarkMode} />
@@ -35,13 +35,13 @@ export function Footer({className, hasDarkMode}) {
             <div className="grid gap-7 md:grid-cols-3">
               <LinkList title="Docs">
                 <Link href="/docs">
-                  <a>All Docs</a>
+                  <a>Documentation</a>
                 </Link>
                 <Link href="/docs/get-started">
-                  <a>Get Started</a>
+                  <a>D&eacute;marrez avec Blitz</a>
                 </Link>
                 <Link href="/docs/contributing">
-                  <a>How To Contribute</a>
+                  <a>Comment contribuer</a>
                 </Link>
               </LinkList>
 
@@ -53,7 +53,7 @@ export function Footer({className, hasDarkMode}) {
                 </Link>
                 <Link href="https://github.com/blitz-js/blitz/discussions">
                   <a target="_blank" rel="noopener noreferrer">
-                    Forum Discussions
+                    Discussions sur forum
                   </a>
                 </Link>
                 <Link href="https://twitter.com/blitz_js">
@@ -62,14 +62,14 @@ export function Footer({className, hasDarkMode}) {
                   </a>
                 </Link>
                 <Link href="/showcase">
-                  <a>Showcase</a>
+                  <a>Vitrine</a>
                 </Link>
               </LinkList>
 
               <LinkList title="Other">
                 <Link href="https://flightcontrol.dev?ref=blitzjs">
                   <a target="_blank" rel="noopener noreferrer">
-                    Deploy with Flightcontrol
+                    D&eacute;ploiement avec Flightcontrol
                   </a>
                 </Link>
                 <Link href="https://github.com/blitz-js/blitz">
@@ -84,7 +84,7 @@ export function Footer({className, hasDarkMode}) {
                 </Link>
                 <Link href="https://store.blitzjs.com">
                   <a target="_blank" rel="noopener noreferrer">
-                    Swag
+                    Goodies
                   </a>
                 </Link>
               </LinkList>
@@ -98,7 +98,7 @@ export function Footer({className, hasDarkMode}) {
             >
               <Link href="https://vercel.com/?utm_source=blitzjs">
                 <a target="_blank" rel="noopener noreferrer">
-                  Hosted on <IoLogoVercel className="inline" /> Vercel
+                  H&eacute;berg&eacute; sur <IoLogoVercel className="inline" /> Vercel
                 </a>
               </Link>
               <br />
