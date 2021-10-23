@@ -412,28 +412,29 @@ undefined
 ]
 ```
 
-## Update generated code for our model attributes {#update-generated-code-for-our-model-attributes}
+## Modifiez le code généré pour nos attributs de modèles {#update-generated-code-for-our-model-attributes}
 
 <Card type="info">
 
-Before running the app again, we need to customize some of the code that
-has been generated. Ultimately, these fixes will not be needed - but for
-now, we need to work around a couple outstanding issues.
+Avant de démarrer l'application de nouveau, nous devons personnaliser une
+partie du code qui a été généré pour nous. Dans une version future, ces
+changements ne seront pas nécéssaires mais pour l'instant ils sont requis
+afin de régler quelques bogues.
 
 </Card>
 
-The generated page content does not currently use the actual model
-attributes you defined during generation. It will soon, but in the
-meantime, let's fix the generated pages.
+Le contenu des pages générées ne prend pas en compte les attributs définis
+lors de la création des modèles. Ce sera le cas bientôt, mais en
+attendant, corrigeons le tout.
 
-### Question pages {#question-pages}
+### Pages de Question {#question-pages}
 
 [//]:
   #
   "Remove the following section once `generate` uses actual model attributes"
 
-Jump over to `app/pages/questions/index.tsx`. Notice that a
-`QuestionsList` component has been generated for you:
+Ouvrez maintenant `app/pages/questions/index.tsx`. Vous remarquerez que le
+composant `QuestionsList` à été généré dans une étape précédente :
 
 ```tsx
 // app/pages/questions/index.tsx
@@ -485,9 +486,9 @@ export const QuestionsList = () => {
 }
 ```
 
-This won’t work though! Remember that the `Question` model we created
-above doesn’t have any `name` field. To fix this, replace `question.name`
-with `question.text`:
+Comme vous pouvez le voir, il ne fonctionnera pas puisqu'il utilise
+l'attribut `name` de `Question` mais ce champ n'existe pas! Nous devons
+remplacer `question.name` par `question.texte`.
 
 ```diff
 // app/pages/questions/index.tsx
@@ -518,7 +519,7 @@ export const QuestionsList = () => {
           <li key={question.id}>
             <Link href={`/questions/${question.id}`}>
 -              <a>{question.name}</a>
-+              <a>{question.text}</a>
++              <a>{question.texte}</a>
             </Link>
           </li>
         ))}
