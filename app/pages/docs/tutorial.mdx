@@ -170,12 +170,10 @@ Si vous le désirez, vous pouvez également essayer de vous déconnecter et
 vous connecter de nouveau. N'hésitez pas à cliquer sur **Forgot your
 password?** pour réinitialiser votre mot de passe.
 
-## Write your first page {#write-your-first-page}
+## Construisez votre première page {#write-your-first-page}
 
-Next let's create your first page.
-
-Open the file `app/pages/index.tsx` and replace the contents of the `Home`
-component with this:
+Ouvrez le fichier `app/pages/index.tsx` et remplacez le contenu du
+composant `Home` par ceci:
 
 ```tsx
 //...
@@ -183,9 +181,9 @@ component with this:
 const Home: BlitzPage = () => {
   return (
     <div>
-      <h1>Hello, world!</h1>
+      <h1>Bonjour, Blitz!</h1>
 
-      <Suspense fallback="Loading...">
+      <Suspense fallback="Chargement...">
         <UserInfo />
       </Suspense>
     </div>
@@ -195,8 +193,9 @@ const Home: BlitzPage = () => {
 //...
 ```
 
-Save the file and you should see the page update in your browser. You can
-customize this as much as you want. When you’re ready, move on to the next
+Sauvegardez vos changements et vous devriez voir la page se mettre à jour
+dans votre navigateur web. Vous pouvez personnaliser ce composant autant
+que vous le souhaitez. Lorsque vous serez prêt·e, passez à la prochaine
 section.
 
 ## Database setup {#database-setup}
