@@ -315,7 +315,7 @@ CREATE    app/choices/mutations/updateChoice.ts
 ? Run 'prisma migrate dev' to update your database? (Y/n) › false
 ```
 
-#### Finalement, ajouter à `Question` un relation vers `Choice`.
+#### Finalement, ajoutez à `Question` un relation vers `Choice`.
 
 Ouvrez `db/schema.prisma` et ajoutez `choix Choice[]` au modèle
 `Question`.
@@ -358,57 +358,56 @@ Your database is now in sync with your schema.
 Notre base de données est maintenant prête à être utilisée et un client
 Prisma a également été généré pour nous. Allons l'essayer!
 
-## Playing with the Prisma database client {#playing-with-the-prisma-database-client}
+## Explorez le client de base de données Prisma {#playing-with-the-prisma-database-client}
 
-Now, let’s hop into the interactive Blitz shell and play around with the
-Prisma database client that Blitz gives you. To start the Blitz console,
-use this command:
+Maintenant, utilisons la console interactive Blitz pour essayer le client
+Prisma fournit par Blitz. Pour débuter, exécutez cette commande :
 
 ```sh
 blitz console
 ```
 
-Once you’re in the console, explore the database client:
+Lorsque c'est fait, essayez le client de base de données :
 
 ```sh
-# No questions are in the system yet.
+# Aucune Question n'a été créée pour l'instant :
 ⚡ > await db.question.findMany()
 []
 
-# Create a new Question:
-⚡ > let q = await db.question.create({data: {text: "What's new?"}})
+# Créez une nouvelle Question :
+⚡ > let q = await db.question.create({data: {texte: "Quoi de neuf?"}})
 undefined
 
-# See the entire object:
+# Observer l'objet entier :
 ⚡ > q
 {
   id: 1,
   createdAt: 2020-06-15T15:06:14.959Z,
   updatedAt: 2020-06-15T15:06:14.959Z,
-  text: "What's new?"
+  texte: "Quoi de neuf?"
 }
 
-# Or, access individual values on the object:
-⚡ > q.text
-"What's new?"
+# Ou accédez à une propriété individuelle de l'objet :
+⚡ > q.texte
+"Quoi de neuf?"
 
-# Change values by using the update function:
-⚡ > q = await db.question.update({where: {id: 1}, data: {text: "What's up?"}})
+# Modifiez des valeurs en utilisant la fonction de mise à jour (update):
+⚡ > q = await db.question.update({where: {id: 1}, data: {texte: "Ça va?"}})
 {
   id: 1,
   createdAt: 2020-06-15T15:06:14.959Z,
   updatedAt: 2020-06-15T15:13:17.394Z,
-  text: "What's up?"
+  texte: "Ça va?"
 }
 
-# db.question.findMany() now displays all the questions in the database:
+# db.question.findMany() affiche maintenant toutes les questions enregistrées :
 ⚡ > await db.question.findMany()
 [
   {
     id: 1,
     createdAt: 2020-06-15T15:06:14.959Z,
     updatedAt: 2020-06-15T15:13:17.394Z,
-    text: "What's up?"
+    texte: "Ça va?"
   }
 ]
 ```
