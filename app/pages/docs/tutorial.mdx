@@ -1,24 +1,24 @@
 ---
-title: Tutorial
-sidebar_label: Tutorial
+title: Tutoriel
+sidebar_label: Tutoriel
 ---
 
-In this tutorial, we’ll walk you through the creation of a basic voting
-application.
+Dans ce tutoriel, nous allons vous apprendre à créer use simple
+application de vote.
 
-We’ll assume that you have [Blitz installed](./get-started) already. You
-can tell if Blitz is installed, and which version you have by running the
-following command in your terminal:
+Ce guide suppose que vous avez déjà [installé Blitz](./get-started). Vous
+pouvez vérifier si c'est le cas ainsi que quelle version vous avez en
+exécutant la commande suivante dans votre terminal :
 
 ```sh
 blitz -v
 ```
 
-If Blitz is installed, you should see the version of your installation. If
-it isn’t, you’ll get an error saying something like “command not found:
-blitz”.
+Si Blitz est bien installé, vous devriez voir le numéro de la version de
+votre installation. Sinon il ne l'est pas, vous devriez voir une erreur
+comme "command not found: blitz".
 
-## Creating a new app {#creating-a-new-app}
+## Créer une nouvelle application {#creating-a-new-app}
 
 From the command line, `cd` into the folder where you’d like to create
 your app, and then run the following command:
@@ -636,11 +636,11 @@ export function QuestionForm<S extends z.ZodType<any, any>>(
 ```
 
 Now open `app/questions/mutations/createQuestion.ts` and update the zod
-schema so that the choice data is accepted in the mutation. We also
-need to update the `db.question.create()` call so that the choices will
-be created. After that we need to export the `CreateQuestion` zod schema because
-we will be using it in the next step to create a validation schema for our
-`QuestionForm`.
+schema so that the choice data is accepted in the mutation. We also need
+to update the `db.question.create()` call so that the choices will be
+created. After that we need to export the `CreateQuestion` zod schema
+because we will be using it in the next step to create a validation schema
+for our `QuestionForm`.
 
 ```diff
 // app/questions/mutations/createQuestion.ts
@@ -668,12 +668,13 @@ export default resolver.pipe(
 )
 ```
 
-Next we're going to create a separate file to store the validation schema for our
-`QuestionForm`. In the `app/pages/questions` folder create a new file called `validations.ts` 
-and import `CreateQuestion` from `app/questions/mutations/createQuestion.ts`. Then
-create a new variable called `createQuestionSchema`, set it equal to `CreateQuestion`,
-and export it so we can use it for our `QuestionForm` schema in the next step.
- 
+Next we're going to create a separate file to store the validation schema
+for our `QuestionForm`. In the `app/pages/questions` folder create a new
+file called `validations.ts` and import `CreateQuestion` from
+`app/questions/mutations/createQuestion.ts`. Then create a new variable
+called `createQuestionSchema`, set it equal to `CreateQuestion`, and
+export it so we can use it for our `QuestionForm` schema in the next step.
+
 ```diff
 // app/pages/questions/validations.ts
 
@@ -682,9 +683,10 @@ and export it so we can use it for our `QuestionForm` schema in the next step.
 + export const createQuestionSchema = CreateQuestion
 ```
 
-Now open `app/pages/questions/new.tsx` and import `createQuestionSchema` from
-`app/pages/questions/validations.ts` and set it as the schema for `QuestionForm`.
-Also, we need set `{{text: "", choices: []}}` as our `initialValues` for `QuestionForm`:
+Now open `app/pages/questions/new.tsx` and import `createQuestionSchema`
+from `app/pages/questions/validations.ts` and set it as the schema for
+`QuestionForm`. Also, we need set `{{text: "", choices: []}}` as our
+`initialValues` for `QuestionForm`:
 
 ```diff
 // app/pages/questions/new.tsx
