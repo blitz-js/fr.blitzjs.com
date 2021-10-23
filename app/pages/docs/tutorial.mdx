@@ -253,7 +253,7 @@ CREATE    app/questions/mutations/updateQuestion.ts
 >   id        Int      @id @default(autoincrement())
 >   createdAt DateTime @default(now())
 >   updatedAt DateTime @updatedAt
->   texte      String
+>   texte     String
 > }
 >
 
@@ -306,7 +306,7 @@ CREATE    app/choices/mutations/updateChoice.ts
 >   id         Int      @default(autoincrement()) @id
 >   createdAt  DateTime @default(now())
 >   updatedAt  DateTime @updatedAt
->   texte       String
+>   texte      String
 >   votes      Int      @default(0)
 >   question   Question @relation(fields: [questionId], references: [id])
 >   questionId Int
