@@ -211,14 +211,16 @@ d'informations, visitez notre
 [guide de base de données](database-overview). Pour ce tutoriel, nous
 allons continuer avec SQLite.
 
-## Scaffolding code for our models {#scaffolding-code-for-our-models}
+## Générez le code de vos modèles {#scaffolding-code-for-our-models}
 
-Blitz provides a handy CLI command called [`generate`](./cli-generate) for
-scaffolding out boilerplate code. We'll use `generate` to create two
-models: `Question` and `Choice`. A `Question` has the text of the question
-and a list of choices. A `Choice` has the text of the choice, a vote
-count, and an associated question. Blitz will automatically generate an
-id, a creation timestamp, and a last updated timestamp for both models.
+Blitz vous permet de générer le code nécéssaire pour une multitude de
+situations via la commande [`generate`](./cli-generate). Nous allons
+l'utiliser afin de générer deux modèles : `Question` et `Choix`. Une
+`Question` consiste du texte de la question ainsi qu'une liste de choix de
+réponse. Un `Choix` contient le texte du choice, un nombre de votes et la
+question à laquelle il fait référence. Blitz s'occupe de générer un `id`
+unique, la date de création ainsi que la date de la dernière modification
+pour chacun des modèle.
 
 #### First, we'll generate everything pertaining to the `Question` model:
 
