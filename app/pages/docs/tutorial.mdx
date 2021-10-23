@@ -222,15 +222,16 @@ question à laquelle il fait référence. Blitz s'occupe de générer un `id`
 unique, la date de création ainsi que la date de la dernière modification
 pour chacun des modèle.
 
-#### First, we'll generate everything pertaining to the `Question` model:
+#### Premièrement, nous allons générer le modèle `Question` :
 
 ```sh
-blitz generate all question text:string
+blitz generate all question texte:string
 ```
 
-And when prompted, press the **Enter** to run `prisma migrate` which will
-update your database schema with the new model. It will ask for a name, so
-type something like "add question".
+Lorsque demandé, appuyez sur la touche **Entrée** afin d'exécuter
+`prisma migrate` pour mettre votre schema de base de données à jour avec
+le modèle nouvellement créé. Vous devrez entrer un nom pour cette
+migration, par exemple : "ajout question".
 
 ```
 CREATE    app/pages/questions/[questionId].tsx
@@ -265,7 +266,7 @@ Datasource "db": SQLite database "db.sqlite" at "file:./db.sqlite"
 The following migration(s) have been created and applied from new schema changes:
 
 migrations/
-  └─ 20210722070215_add_question/
+  └─ 20210722070215_ajout_question/
     └─ migration.sql
 
 Your database is now in sync with your schema.
@@ -273,9 +274,9 @@ Your database is now in sync with your schema.
 ✔ Generated Prisma Client (2.27.0) to ./node_modules/@prisma/client in 187ms
 ```
 
-The `generate` command with a type of `all` generates a model and queries,
-mutation and page files. See the [Blitz generate](./cli-generate) page for
-a list of available type options.
+Lorsque suivie par `all`, la commande `generate` génère un modèle ainsi
+que toutes ses requêtes, mutations et pages. Pour une liste d'options
+complète, visitez [Blitz generate](./cli-generate).
 
 #### Next we'll generate the `Choice` model with corresponding queries and mutations.
 
