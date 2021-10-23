@@ -215,9 +215,9 @@ allons continuer avec SQLite.
 
 Blitz vous permet de générer le code nécéssaire pour une multitude de
 situations via la commande [`generate`](./cli-generate). Nous allons
-l'utiliser afin de générer deux modèles : `Question` et `Choix`. Une
+l'utiliser afin de générer deux modèles : `Question` et `Choice`. Une
 `Question` consiste du texte de la question ainsi qu'une liste de choix de
-réponse. Un `Choix` contient le texte du choice, un nombre de votes et la
+réponse. Un `Choice` contient le texte du choice, un nombre de votes et la
 question à laquelle il fait référence. Blitz s'occupe de générer un `id`
 unique, la date de création ainsi que la date de la dernière modification
 pour chacun des modèle.
@@ -253,7 +253,7 @@ CREATE    app/questions/mutations/updateQuestion.ts
 >   id        Int      @id @default(autoincrement())
 >   createdAt DateTime @default(now())
 >   updatedAt DateTime @updatedAt
->   text      String
+>   texte      String
 > }
 >
 
@@ -262,7 +262,7 @@ Environment variables loaded from .env
 Prisma schema loaded from db/schema.prisma
 Datasource "db": SQLite database "db.sqlite" at "file:./db.sqlite"
 
-✔ Enter a name for the new migration: … add question
+✔ Enter a name for the new migration: … ajout question
 The following migration(s) have been created and applied from new schema changes:
 
 migrations/
@@ -274,24 +274,24 @@ Your database is now in sync with your schema.
 ✔ Generated Prisma Client (2.27.0) to ./node_modules/@prisma/client in 187ms
 ```
 
-Lorsque suivie par `all`, la commande `generate` génère un modèle ainsi
-que toutes ses requêtes, mutations et pages. Pour une liste d'options
-complète, visitez [Blitz generate](./cli-generate).
+Lorsque suivie par l'option `all`, la commande `generate` génère un modèle
+ainsi que toutes ses requêtes, mutations et pages. Pour une liste
+d'options complète, visitez [Blitz generate](./cli-generate).
 
-#### Next we'll generate the `Choice` model with corresponding queries and mutations.
+#### Ensuite généréz le modèle `Choice` avec ses requêtes et mutations.
 
-We'll pass a type of `resource` this time as we don't need to generate
-pages for the `Choice` model:
+Cette fois, nous allons utiliser l'option `resource` puisque nous ne
+voulons pas générer de pages pour le modèle `Choice`:
 
 ```sh
-blitz generate resource choice text votes:int:default=0 belongsTo:question
+blitz generate resource choice texte votes:int:default=0 belongsTo:question
 ```
 
-If you get an error run `blitz prisma format`
+Si vous obtenez une erreur, exécutez `blitz prisma format`
 
-Note that this doesn't require a database migration because we haven't
-added the `Choice` field to the `Question` model yet. So we are choosing
-`false` when prompted to run the migration:
+Veuillez noter que ceci ne requiert pas de migration puisque nous n'avons
+pas encore ajouté le champ `Choix` au modèle `Question`. Nous allons donc
+choisir `false` lorsqu'on nous demandera de démarrer une migration :
 
 ```
 CREATE    app/choices/queries/getChoice.ts
@@ -306,7 +306,7 @@ CREATE    app/choices/mutations/updateChoice.ts
 >   id         Int      @default(autoincrement()) @id
 >   createdAt  DateTime @default(now())
 >   updatedAt  DateTime @updatedAt
->   text       String
+>   texte       String
 >   votes      Int      @default(0)
 >   question   Question @relation(fields: [questionId], references: [id])
 >   questionId Int
@@ -315,46 +315,48 @@ CREATE    app/choices/mutations/updateChoice.ts
 ? Run 'prisma migrate dev' to update your database? (Y/n) › false
 ```
 
-#### Lastly let's update the `Question` model to have a relationship back to `Choice`.
+#### Finalement, ajouter à `Question` un relation vers `Choice`.
 
-Open `db/schema.prisma` and add `choices Choice[]` to the `Question`
-model.
+Ouvrez `db/schema.prisma` et ajoutez `choix Choice[]` au modèle
+`Question`.
 
 ```diff
 model Question {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  text      String
-+ choices   Choice[]
+  texte     String
++ choix     Choice[]
 }
 ```
 
-Now we can run the migration to update our database:
+Nous pouvons désormais démarrer la migration pour mettre à jour notre base
+de données :
 
 ```sh
 blitz prisma migrate dev
 ```
 
-And again, enter a name for the migration, like "add choice":
+Encore une fois, choisissez un nom pour la migration, par exemple : "ajout
+choice".
 
 ```
 Environment variables loaded from .env
 Prisma schema loaded from db/schema.prisma
 Datasource "db": SQLite database "db.sqlite" at "file:./db.sqlite"
 
-✔ Name of migration … add choice
+✔ Name of migration … ajout choice
 The following migration(s) have been created and applied from new schema changes:
 
 migrations/
-  └─ 20210412175528_add_choice/
+  └─ 20210412175528_ajout_choice/
     └─ migration.sql
 
 Your database is now in sync with your schema.
 ```
 
-Now our database is ready and a Prisma client is also generated. Lets move
-on to play with the Prisma client!
+Notre base de données est maintenant prête à être utilisée et un client
+Prisma a également été généré pour nous. Allons l'essayer!
 
 ## Playing with the Prisma database client {#playing-with-the-prisma-database-client}
 
