@@ -1,82 +1,87 @@
 ---
-title: Get Started with Blitz
-sidebar_label: Get Started
+title: Démarrez avec Blitz
+sidebar_label: Bien démarrer
 ---
 
-### Set Up Your Computer {#set-up-your-computer}
+### Configurez votre ordinateur {#set-up-your-computer}
 
-You need Node.js 12 or newer. You can verify this by running `node -v` in
-your terminal. If you don't have Node or need a newer version, we
-recommend using a node version manager like
-[fnm](https://github.com/Schniz/fnm). That will allow you to change node
-versions and even have different versions for each project.
+Vous aurez besoin de Node.js 12 ou plus récent. Vous pouvez vérifier votre
+version en exécutant `node -v` dans votre terminal. Si vous n'avez pas
+Node ou avez besoin d'une version plus récente, nous recommandons
+d'utiliser un gestionaire de version Node tel que
+[fnm](https://github.com/Schniz/fnm). Cela vous permettra de facilement
+alterner entre les différentes versions de Node.js selon les besoins de vos
+projets.
 
-### Install Blitz {#install-blitz}
+### Installez Blitz {#install-blitz}
 
-Run `yarn global add blitz` or `npm install -g blitz --legacy-peer-deps`
-(legacy-peer-deps is needed because npm totally changed the behavior of peer
-deps and some dependencies haven't caught up)
+Exécutez `yarn global add blitz` ou
+`npm install -g blitz --legacy-peer-deps` . Notez que l'option legacy-peer-deps est
+requise car certaines dépendances ne se sont toujours pas adaptées au nouveau comportement
+imposé par npm.
 
-### Create a New App {#create-a-new-app}
+### Créez une nouvelle application {#create-a-new-app}
 
-1. `blitz new myAppName`
-2. `cd myAppName`
+1. `blitz new monApplication`
+2. `cd monApplication`
 3. `blitz dev`
-4. View your brand new app at
+4. Explorez votre toute nouvelle application en visitant
    [http://localhost:3000](http://localhost:3000)
 
-## Welcome to the Blitz Community 👋 {#welcome-to-the-blitz-community}
+## Bienvenue dans la communauté Blitz 👋 {#welcome-to-the-blitz-community}
 
-The Blitz community is warm, safe, diverse, inclusive, and fun! LGBTQ+,
-women, and minorities are especially welcome.
+La communauté Blitz est accueillante, sécuritaire, diverse, inclusive, et
+fun ! Les membres LGBTQ+, les femmes ainsi que les minorités sont d'autant
+plus les bienvenus.
 
-[Join our Discord Community](https://discord.blitzjs.com) where we help
-each other build Blitz apps. It's also where we collaborate on building
-Blitz itself.
+[Rejoignez notre communauté Discord](https://discord.blitzjs.com) où nous
+nous entraidons dans la construction d'applications Blitz. C'est également
+là où nous collaborons pour le développement de Blitz.
 
-For questions and longer form discussions,
-[post in our forum.](https://github.com/blitz-js/blitz/discussions)
+Pour les questions et les discussions plus longues,
+[publiez sur notre forum.](https://github.com/blitz-js/blitz/discussions)
 
-For a full introduction, read
-[How the Community Operates](./how-the-community-operates). This details
-everything, including how to get help, how to report bugs, how to suggest
-new features, etc.
+Pour une introduction complète, lisez
+[Fonctionnement de la Communauté](./how-the-community-operates). Ceci
+explique tout, incluant comment trouver de l'aide, rapporter des bogues,
+proposer des nouvelles fonctionalités, etc.
 
-#### You are invited to help make Blitz the best it can be! 🤝
+#### Vous êtes invité à nous aider à rendre Blitz encore meilleur! 🤝
 
-We have an awesome community that's working together to make Blitz the
-best framework the world has ever seen.
+Nous avons une incroyable communauté qui travaille ensemble pour s'assurer
+que Blitz devienne le meilleur framework que le monde ait jamais connu.
 
-How you can help:
+Comment vous pouvez participer :
 
-1. Report bugs by
-   [opening an issue on GitHub](https://github.com/blitz-js/blitz/issues/new/choose)
-1. Contribute code:
-   [Read the contributing guide so see how to get started](./contributing).
-1. [Sponsorships & donations](https://github.com/blitz-js/blitz#sponsors-and-donations),
-   which start at $5/month
-1. Any other way you want! We totally appreciate any type of contribution,
-   such as documentation, videos, blog posts, etc. If you have an unusual
-   idea, feel free to run it past us in Discord! :)
+1. Rapporter des bogues en
+   [créant une issue sur GitHub](https://github.com/blitz-js/blitz/issues/new/choose).
+1. Contribuer au développement :
+   [Lisez le guide de contribution pour savoir comment débuter](./contributing).
+1. [Commandites & dons](https://github.com/blitz-js/blitz#sponsors-and-donations),
+   à partir de $5/mois.
+1. De toute autre façon que vous pouvez imaginer ! Nous apprécions
+   également les autres types de contribution tels que la documentation,
+   les vidéos, les blogues, etc. Si vous avez une idée qui sort de
+   l'ordinaire, n'hésitez pas à nous contacter sur Discord ! :)
 
-## Next Steps {#next-steps}
+## Prochaines Étapes {#next-steps}
 
-### Tutorial {#tutorial}
+### Tutoriel {#tutorial}
 
-The [Tutorial](./tutorial) is a full walkthrough through all the
-fundamental parts of Blitz, including adding models to your database and
-reading and updating data from your frontend.
+Le [Tutoriel](./tutorial) est une démonstration complète des parties
+fondamentales de Blitz, incluant l'ajout d'entités à votre base de données
+ainsi que la lecture et la mise à jour de données depuis votre frontend.
 
-### Learning {#learning}
+### Apprentissage {#learning}
 
-And here's major aspects of Blitz that you'll want to become familiar
-with.
+Voici une liste des concepts majeurs de Blitz qui vous serons utiles pour débuter.
 
-- How to [make Pages](./pages)
-- How to [use the File-System Routing](./routing)
-- How to set up and [use a Database](./database-overview)
-- How to use Blitz [Queries](./query-resolvers) and
-  [Mutations](./mutation-resolvers) for reading and writing data to your
-  database
-- How to scaffold all the code for database models with the
-  [`blitz generate`](./cli-generate) command
+- Comment [créer des pages](./pages)
+- Comment [utiliser la navigation par système de fichiers](./routing)
+- Comment configurer et
+  [utiliser une base de données](./database-overview)
+- Comment utiliser les [requêtes](./query-resolvers) et
+  [mutations](./mutation-resolvers) Blitz pour lire et écrire en utilisant
+  votre base de données
+- Comment échafauder tout le code requis pour vos divers modèles de base
+  de données en utilisant la commande [`blitz generate`](./cli-generate)
