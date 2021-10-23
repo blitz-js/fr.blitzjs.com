@@ -2,13 +2,14 @@
 exports.profanitySureness = 1
 
 exports.allow = [
-  "simple",
-  "special",
-  "invalid",
   "he-she",
   "her-him",
   "herself-himself",
-  "obvious",
-  "host",
   "host-hostess",
+  "host",
+  "invalid",
+  "obvious",
+  "simple",
+  "special",
+  "tard",
 ]

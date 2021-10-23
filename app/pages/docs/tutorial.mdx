@@ -173,7 +173,7 @@ password?** pour réinitialiser votre mot de passe.
 ## Construisez votre première page {#write-your-first-page}
 
 Ouvrez le fichier `app/pages/index.tsx` et remplacez le contenu du
-composant `Home` par ceci:
+composant `Home` par ceci :
 
 ```tsx
 //...
@@ -198,17 +198,20 @@ dans votre navigateur web. Vous pouvez personnaliser ce composant autant
 que vous le souhaitez. Lorsque vous serez prêt·e, passez à la prochaine
 section.
 
-## Database setup {#database-setup}
+## Configurez une base de données {#database-setup}
 
-Good news, an SQLite database was already set up for you! You can run
-`blitz prisma studio` in the terminal to open a web interface where you
-can see the data in your database.
+Bonne nouvelle! Une base de données SQLite est déjà configurée! Vous
+pouvez exécuter `blitz prisma studio` dans votre terminal pour explorer
+vos tables et leurs champs via une interface web.
 
-Note that when starting your first real project, you may want to use a
-more scalable database like PostgreSQL, to avoid the pains of switching
-your database down the road. For more information, see
-[Database overview](database-overview). For now, we will continue with the
-default SQLite database.
+<!--alex ignore retext-profanities-->
+
+Veuillez notez que dans le contexte d'un vrai projet, vous auriez avantage
+à utiliser une base de données plus robuste, telle que PostgreSQL, dès le
+départ afin d'éviter de devoir changer plus tard. Pour plus
+d'informations, visitez notre
+[guide de base de données](database-overview). Pour ce tutoriel, nous
+allons continuer avec SQLite.
 
 ## Scaffolding code for our models {#scaffolding-code-for-our-models}
 
