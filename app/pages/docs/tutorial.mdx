@@ -846,29 +846,29 @@ sous le composant `Link` dans `QuestionsList` :
 Vérifiez le tout en visitant `/questions` avec votre navigateur.
 **Magie!**
 
-## Let’s let people vote on these questions! {#let-people-vote-on-questions}
+## Permettez aux utilisateurs de voter! {#let-people-vote-on-questions}
 
-Open `app/pages/questions/[questionId].tsx` in your editor. First, we’re
-going to improve this page somewhat.
+Naviguez vers `app/pages/questions/[questionId].tsx` dans votre éditeur.
+Pour commencer, nous allons améliorer cette page.
 
-1. Replace `<h1>Question {question.id}</h1>` with
-   `<h1>{question.text}</h1>`.
+1. Remplacez `<h1>Question {question.id}</h1>` par
+   `<h1>{question.texte}</h1>`.
 
-2. Delete the `pre` element, and copy in our choices list which we wrote
-   before:
+2. Supprimez l'élément `pre` et copiez la liste de choix que nous avons
+   définie auparavant :
 
 ```tsx
 <ul>
-  {question.choices.map((choice) => (
-    <li key={choice.id}>
-      {choice.text} - {choice.votes} votes
+  {question.choix.map((choix) => (
+    <li key={choix.id}>
+      {choix.texte} - {choix.votes} votes
     </li>
   ))}
 </ul>
 ```
 
-If you go back to your browser, your page should now look something like
-this!
+Si vous retournez dans votre navigateur, la page devrait maintenant
+ressembler à ceci!
 
 <img
   width="567"
@@ -876,10 +876,10 @@ this!
   src="https://user-images.githubusercontent.com/24858006/80387990-3c3d8b80-88a1-11ea-956a-5be85f1e8f12.png"
 />
 
-#### Now it’s time to add voting!
+#### Il est temps de voter!
 
-First we need to open `app/choices/mutations/updateChoice.ts`, update the
-zod schema, and add a vote increment.
+Premièrement nous devons ouvrir `app/choices/mutations/updateChoice.ts`,
+modifier le schema zod et ajouter un incrementeur de votes.
 
 ```diff
 const UpdateChoice = z
@@ -904,20 +904,20 @@ export default resolver.pipe(
 )
 ```
 
-Now go back to `app/pages/questions/[questionId].tsx` and make the
-following changes:
+Retournez à `app/pages/questions/[questionId].tsx` et appliquez les
+changements suivants :
 
-In our `li`, add a `button` like so:
+Dans notre `li`, ajoutez un `button` comme ceci :
 
 ```tsx
-<li key={choice.id}>
-  {choice.text} - {choice.votes} votes
-  <button>Vote</button>
+<li key={choix.id}>
+  {choix.texte} - {choix.votes} votes
+  <button>Voter</button>
 </li>
 ```
 
-Then, import the `updateChoice` mutation we updated and create a
-`handleVote` function in our page:
+Ensuite, importez la mutation `updateChoice` que nous avons modifiée et
+créez une fonction `handleVote` :
 
 ```diff
 // app/pages/questions/[questionId].tsx
@@ -944,8 +944,8 @@ export const Question = () => {
   return (
 ```
 
-And then we need to update the question `useQuery` call to return the
-`refetch` function which we use inside `handleVote`:
+Par la suite nous devons modifier l'appel à `useQuery` pour inclure la
+fonction `refetch` que nous utilisons dans `handleVote`.
 
 ```diff
 // app/pages/questions/[questionId].tsx
@@ -956,13 +956,13 @@ And then we need to update the question `useQuery` call to return the
 //...
 ```
 
-Finally, we’ll tell our new `button` to call that function!
+Finalement, disons à notre nouveau `button` d'exécuter cette fonction!
 
 ```tsx
-<button onClick={() => handleVote(choice.id)}>Vote</button>
+<button onClick={() => handleVote(choice.id)}>Voter</button>
 ```
 
-The final `Question` component should now look like this:
+Le composant `Question` devrait maintenant ressembler à ceci :
 
 ```tsx
 export const Question = () => {
@@ -990,31 +990,31 @@ export const Question = () => {
       </Head>
 
       <div>
-        <h1>{question.text}</h1>
+        <h1>{question.texte}</h1>
         <ul>
-          {question.choices.map((choice) => (
-            <li key={choice.id}>
-              {choice.text} - {choice.votes} votes
-              <button onClick={() => handleVote(choice.id)}>Vote</button>
+          {question.choix.map((choix) => (
+            <li key={choix.id}>
+              {choix.texte} - {choix.votes} votes
+              <button onClick={() => handleVote(choix.id)}>Voter</button>
             </li>
           ))}
         </ul>
 
         <Link href={`/questions/${question.id}/edit`}>
-          <a>Edit</a>
+          <a>Modifier</a>
         </Link>
 
         <button
           type="button"
           onClick={async () => {
-            if (window.confirm("This will be deleted")) {
+            if (window.confirm("Cette question sera supprimée")) {
               await deleteQuestionMutation({ id: question.id })
               router.push("/questions")
             }
           }}
           style={{ marginLeft: "0.5rem" }}
         >
-          Delete
+          Supprimer
         </button>
       </div>
     </>
