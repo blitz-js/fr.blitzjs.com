@@ -744,21 +744,23 @@ des valeurs par défaut `{{texte: "", choix: []}}` pour nos champs de
 Vous pouvez maintenant visiter `localhost:3000/questions/new` et créer une
 question à choix multiples!
 
-## Listing choices {#listing-choices}
+## Affichez les choix {#listing-choices}
 
-Time for a breather. Go back to `localhost:3000/questions` in your browser
-and look at all the questions you‘ve created. How about we list these
-questions’ choices here too? First, we need to customize the question
-queries. In Prisma, you need to manually let the client know that you want
-to query for nested relations. Change your `getQuestion.ts` and
-`getQuestions.ts` files to look like this:
+Prenons une courte pause. Retournez à `localhost:3000/questions` dans
+votre navigateur et regardez toutes les questions que vous avez créées.
+Que diriez-vous de pouvoir lire tous les choix disponibles pour chaque
+question au même endroit? Premièrement vous devons personnaliser les
+requêtes de questions. Avec Prisma, vous devez manuellement spécifier
+lorsque vous désirez récupérer une relation imbriquée. Modifiez vos
+fichiers `getQuestion.ts` et `getQuestions.ts` afin qu'ils ressemblent à
+ceci :
 
 ```diff
 // app/questions/queries/getQuestion.ts
 
 const GetQuestion = z.object({
-  // This accepts type of undefined, but is required at runtime
-  id: z.number().optional().refine(Boolean, "Required"),
+  // Ceci accepte le type `undefined` à la compilation, mais est bien requis
+  id: z.number().optional().refine(Boolean, "Requis"),
 })
 
 export default resolver.pipe(
@@ -768,7 +770,7 @@ export default resolver.pipe(
 -   const question = await db.question.findFirst({where: {id}})
 +   const question = await db.question.findFirst({
 +     where: {id},
-+     include: {choices: true},
++     include: {choix: true},
 +   })
 
     if (!question) throw new NotFoundError()
@@ -799,7 +801,7 @@ export default resolver.pipe(
           ...paginateArgs,
           where,
           orderBy,
-+         include: {choices: true},
++         include: {choix: true},
         }),
     })
 
@@ -813,10 +815,10 @@ export default resolver.pipe(
 )
 ```
 
-Now hop back to our main questions page
-(`app/pages/questions/index.tsx`)in your editor, and we can list the
-choices of each question. And add this code beneath the `Link` in our
-`QuestionsList`:
+Retournez à la page de questions principale
+(`app/pages/questions/index.tsx`) dans votre éditeur. Nous pouvons
+afficher la liste de choix de chaque question en ajoutant le code suivant
+sous le composant `Link` dans `QuestionsList` :
 
 ```diff
 // app/pages/questions/index.tsx
@@ -826,12 +828,12 @@ choices of each question. And add this code beneath the `Link` in our
   questions.map((question) => (
     <li key={question.id}>
       <Link href={`/questions/${question.id}`}>
-        <a>{question.text}</a>
+        <a>{question.texte}</a>
       </Link>
 +     <ul>
-+       {question.choices.map((choice) => (
-+         <li key={choice.id}>
-+           {choice.text} - {choice.votes} votes
++       {question.choix.map((choice) => (
++         <li key={choix.id}>
++           {choix.texte} - {choix.votes} votes
 +         </li>
 +       ))}
 +     </ul>
@@ -841,7 +843,8 @@ choices of each question. And add this code beneath the `Link` in our
 // ...
 ```
 
-Now check `/questions` in the browser. **Magic!**
+Vérifiez le tout en visitant `/questions` avec votre navigateur.
+**Magie!**
 
 ## Let’s let people vote on these questions! {#let-people-vote-on-questions}
 
