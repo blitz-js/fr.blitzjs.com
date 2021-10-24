@@ -536,9 +536,10 @@ export const QuestionsList = () => {
 }
 ```
 
-Next, let’s apply a similar fix to
-`app/questions/components/QuestionForm.tsx`. In the form submission,
-replace the `LabeledTextField` `name` to be `"text"`
+Ensuite, faisons la même chose dans
+`app/questions/components/QuestionForm.tsx`. Dans le formulaire de
+soumission, remplacez la valeur `name` de `LabeledTextField` par
+`"texte"`.
 
 ```diff
 export function QuestionForm<S extends z.ZodType<any, any>>(
@@ -547,16 +548,17 @@ export function QuestionForm<S extends z.ZodType<any, any>>(
   return (
     <Form<S> {...props}>
 -     <LabeledTextField name="name" label="Name" placeholder="Name" />
-+     <LabeledTextField name="text" label="Text" placeholder="Text" />
++     <LabeledTextField name="texte" label="Texte" placeholder="Texte" />
     </Form>
   )
 }
 ```
 
-### `createQuestion` mutation {#create-question-mutation}
+### La mutation `createQuestion` {#create-question-mutation}
 
-In `app/questions/mutations/createQuestion.ts`, we need to update the
-`CreateQuestion` zod validation schema to use `text` instead of `name`.
+Dans `app/questions/mutations/createQuestion.ts`, nous devons modifier le
+schema de validation zod de `CreateQuestion` afin qu'il utilise `texte`
+plutôt que `name`.
 
 ```diff
 // app/questions/mutations/createQuestion.ts
@@ -564,15 +566,16 @@ In `app/questions/mutations/createQuestion.ts`, we need to update the
 const CreateQuestion = z
   .object({
 -   name: z.string(),
-+   text: z.string(),
++   texte: z.string(),
   })
 // ...
 ```
 
-### `updateQuestion` mutation {#update-question-mutation}
+### La mutation `updateQuestion` {#update-question-mutation}
 
-In `app/questions/mutations/updateQuestion.ts`, we need to update the
-`UpdateQuestion` zod validation schema to use `text` instead of `name`.
+Dans `app/questions/mutations/updateQuestion.ts`, nous devons modifier le
+schema de validation zod de `CreateQuestion` afin qu'il utilise `texte`
+plutôt que `name`.
 
 ```diff
 // app/questions/mutations/updateQuestion.ts
@@ -581,26 +584,27 @@ const UpdateQuestion = z
   .object({
     id: z.number(),
 -   name: z.string(),
-+   text: z.string(),
++   texte: z.string(),
   })
 ```
 
-### `deleteQuestion` mutation {#delete-question-mutation}
+### La mutation `deleteQuestion` {#delete-question-mutation}
 
 [//]: # "Remove this section once Prisma supports cascading deletes"
 
-Prisma does not yet support "cascading deletes". In the context of this
-tutorial, that means it does not currently delete the `Choice` data when
-deleting a `Question`. We need to temporarily augment the generated
-`deleteQuestion` mutation in order to do this manually. Open up
-`app/questions/mutations/deleteQuestion.ts` in your text editor and add
-the following to the top of the function body:
+Pour le moment Prisma ne nous permet pas de supprimer des données en
+cascade. Dans le cadre de ce tutoriel, cela veut dire que lorsque nous
+supprimons une question, les choix associés à cette question ne seront pas
+supprimés automatiquement. Nous devons temporairement modifier la mutation
+`deleteQuestion` afin d'ajouter cette fonctionnalité manuellement.
+Naviguez vers `app/questions/mutations/deleteQuestion.ts` dans votre
+éditeur de texte et ajoutez ce qui suit au début de la fonction :
 
 ```ts
 await db.choice.deleteMany({ where: { questionId: id } })
 ```
 
-The end result should be as such:
+Le résultat final devrait ressembler à ceci :
 
 ```diff
 // app/questions/mutations/deleteQuestion.ts
@@ -617,14 +621,15 @@ export default resolver.pipe(
 )
 ```
 
-This mutation will now delete the choices associated with the question
-prior to deleting the question itself.
+Cette mutation va désormais supprimer les choix associés à la question
+avant même de supprimer la question.
 
-#### Now try creating, updating, and deleting questions
+#### Essayez de créer, modifier et supprimer des questions
 
-Great! Now make sure your app is running. If it isn’t, run `blitz dev` in
-your terminal, and visit `localhost:3000/questions`. Try creating
-questions, editing, and deleting them.
+Parfait! Assurez-vous que votre application est démarrée. Si ce n'est pas
+le cas, exécutez `blitz dev` dans votre terminal et visitez
+`localhost:3000/questions`. Essayez de créer quelques questions, de les
+modifier et de les supprimer.
 
 ## Adding choices to the question form {#adding-choices-to-the-question-form}
 
