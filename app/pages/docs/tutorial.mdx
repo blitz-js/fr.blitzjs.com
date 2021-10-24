@@ -631,13 +631,14 @@ le cas, exécutez `blitz dev` dans votre terminal et visitez
 `localhost:3000/questions`. Essayez de créer quelques questions, de les
 modifier et de les supprimer.
 
-## Adding choices to the question form {#adding-choices-to-the-question-form}
+## Ajoutez des choix au formulaire de création de question {#adding-choices-to-the-question-form}
 
-You’re doing great so far! The next thing we’ll do is add choices to our
-question form. Open `app/questions/components/QuestionForm.tsx` in your
-editor.
+Vous vous débrouillez bien jusqu'ici! Nous avons maintenant besoin
+d'ajouter des choix à nos questions. Naviguez vers
+`app/questions/components/QuestionForm.tsx` dans votre éditeur.
 
-Add three more `<LabeledTextField>` components as choices.
+Ajoutez trois composants `<LabeledTextField>` au formulaire, un pour
+chaque choix.
 
 ```diff
 export function QuestionForm<S extends z.ZodType<any, any>>(
@@ -645,29 +646,29 @@ export function QuestionForm<S extends z.ZodType<any, any>>(
 ) {
   return (
     <Form<S> {...props}>
-      <LabeledTextField name="text" label="Text" placeholder="Text" />
-+     <LabeledTextField name="choices.0.text" label="Choice 1" />
-+     <LabeledTextField name="choices.1.text" label="Choice 2" />
-+     <LabeledTextField name="choices.2.text" label="Choice 3" />
+      <LabeledTextField name="texte" label="Texte" placeholder="Texte" />
++     <LabeledTextField name="choix.0.texte" label="Choix 1" />
++     <LabeledTextField name="choix.1.texte" label="Choix 2" />
++     <LabeledTextField name="choix.2.texte" label="Choix 3" />
     </Form>
   )
 }
 ```
 
-Now open `app/questions/mutations/createQuestion.ts` and update the zod
-schema so that the choice data is accepted in the mutation. We also need
-to update the `db.question.create()` call so that the choices will be
-created. After that we need to export the `CreateQuestion` zod schema
-because we will be using it in the next step to create a validation schema
-for our `QuestionForm`.
+Naviguez vers `app/questions/mutations/createQuestion.ts` et modifiez le
+schema zod afin qu'il accepte ces nouveaux choix. Nous devons également
+modifier l'appel à la fonction `db.question.create()` pour créer ces
+choix. Ensuite, nous devons exporter le schema zod de `CreateQuestion`
+puisque nous en aurons besoin dans la prochaine étape pour notre
+`QuestionForm`.
 
 ```diff
 // app/questions/mutations/createQuestion.ts
 
 + export const CreateQuestion = z
     .object({
-      text: z.string().nonempty({message: "You must enter a question."}),
-+     choices: z.array(z.object({text: z.string()})),
+      texte: z.string().nonempty({message: "Veuillez entrer une question."}),
++     choix: z.array(z.object({texte: z.string()})),
     })
 
 export default resolver.pipe(
@@ -678,7 +679,7 @@ export default resolver.pipe(
 +   const question = await db.question.create({
 +     data: {
 +       ...input,
-+       choices: {create: input.choices},
++       choix: {create: input.choix},
 +     },
 +   })
 
@@ -687,12 +688,13 @@ export default resolver.pipe(
 )
 ```
 
-Next we're going to create a separate file to store the validation schema
-for our `QuestionForm`. In the `app/pages/questions` folder create a new
-file called `validations.ts` and import `CreateQuestion` from
-`app/questions/mutations/createQuestion.ts`. Then create a new variable
-called `createQuestionSchema`, set it equal to `CreateQuestion`, and
-export it so we can use it for our `QuestionForm` schema in the next step.
+Ensuite nous allons créer un fichier séparé où nous allons stocker la
+schema de validation zod pour `QuestionForm`. Dans le répertoire
+`app/pages/questions`, créez un fichier nommé `validation.ts` et importez
+`CreateQuestion` depuis `app/questions/mutations/createQuestion.ts`. Créez
+une nouvelle variable nommée `createQuestionSchema` et assignez-lui la
+valeur de `CreateQuestion`. Vous pouvez maintenant l'exporter pour
+l'utiliser dans le schema `QuestionForm` de la prochaine étape.
 
 ```diff
 // app/pages/questions/validations.ts
@@ -702,10 +704,11 @@ export it so we can use it for our `QuestionForm` schema in the next step.
 + export const createQuestionSchema = CreateQuestion
 ```
 
-Now open `app/pages/questions/new.tsx` and import `createQuestionSchema`
-from `app/pages/questions/validations.ts` and set it as the schema for
-`QuestionForm`. Also, we need set `{{text: "", choices: []}}` as our
-`initialValues` for `QuestionForm`:
+Naviguez vers `app/pages/questions/new.tsx` et importez
+`createQuestionSchema` depuis `app/pages/questions/validations.ts` pour
+l'utiliser en tant que schema de `QuestionForm`. Nous devons aussi ajouter
+des valeurs par défaut `{{texte: "", choix: []}}` pour nos champs de
+`QuestionForm`
 
 ```diff
 // app/pages/questions/new.tsx
@@ -714,14 +717,14 @@ from `app/pages/questions/validations.ts` and set it as the schema for
 
 
       <QuestionForm
-        submitText="Create Question"
+        submitText="Créer une Question"
 -       // TODO use a zod schema for form validation
 -       //  - Tip: extract mutation's schema into a shared `validations.ts` file and
 -       //         then import and use it here
 -       // schema={createQuestion}
 -       // initialValues={{ }}
 +       schema={createQuestionSchema}
-+       initialValues={{text: "", choices: []}}
++       initialValues={{texte: "", choix: []}}
         onSubmit={async (values) => {
           try {
             const question = await createQuestionMutation(values)
@@ -736,10 +739,10 @@ from `app/pages/questions/validations.ts` and set it as the schema for
       />
 ```
 
-#### Try it out
+#### Essayez vos changements
 
-Now you can go to `localhost:3000/questions/new` and create a new question
-with choices!
+Vous pouvez maintenant visiter `localhost:3000/questions/new` et créer une
+question à choix multiples!
 
 ## Listing choices {#listing-choices}
 
