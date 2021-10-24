@@ -1022,14 +1022,15 @@ export const Question = () => {
 }
 ```
 
-## Lastly, let's allow editing choices for an existing question {#edit-choices-for-question}
+## Finalement, ajoutons la possibilité de modifier les choix d'une question {#edit-choices-for-question}
 
-If you click the **Edit** button on one of your existing questions, you'll
-see it uses the same form as creating questions. So that part is already
-done! We only need to update our mutation.
+Si vous cliquez sur le boutton **Modifier** sur la page d'une question
+existante, vous verrez que le formulaire est le même que pour la création.
+Cette partie est donc déjà faite pour nous, il ne reste qu'a modifier
+notre mutation.
 
-Open `app/questions/mutations/updateQuestion.ts` and make the following
-changes:
+Ouvrez `app/questions/mutations/updateQuestion.ts` et appliquez les
+changements suivants :
 
 ```diff
 // app/questions/mutations/updateQuestion.ts
@@ -1040,9 +1041,9 @@ import * as z from "zod"
 const UpdateQuestion = z
   .object({
     id: z.number(),
-    text: z.string(),
-+   choices: z.array(
-+     z.object({id: z.number().optional(), text: z.string()}),
+    texte: z.string(),
++   choix: z.array(
++     z.object({id: z.number().optional(), texte: z.string()}),
 +   ),
   })
 
@@ -1055,18 +1056,18 @@ export default resolver.pipe(
 +     where: {id},
 +     data: {
 +       ...data,
-+       choices: {
-+         upsert: data.choices.map((choice) => ({
-+           // Appears to be a prisma bug,
-+           // because `|| 0` shouldn't be needed
-+           where: {id: choice.id || 0},
-+           create: {text: choice.text},
-+           update: {text: choice.text},
++       choix: {
++         upsert: data.choix.map((choix) => ({
++           // Il s'agit d'un bogue Prisma,
++           // puisque `|| 0` ne devrait pas être nécessaire
++           where: {id: choix.id || 0},
++           create: {text: choix.texte},
++           update: {text: choix.texte},
 +         })),
 +       },
 +     },
 +     include: {
-+       choices: true,
++       choix: true,
 +     },
 +   })
 
@@ -1076,16 +1077,17 @@ export default resolver.pipe(
 ```
 
 [`upsert`](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#upsert)
-is a special operation that means, "If this item exists, update it. Else
-create it". This is perfect for this case because we didn't require the
-user to add three choices when creating the question. So if later the user
-adds another choice by editing the question, then it'll be created here.
+est une opération spéciale qui pourrait se résumer en "Si cet élément
+existe déjà, modifiez le. Sinon créez le". C'est parfait pour notre cas de
+figure puisque nous n'obligeons pas l'utilisateur à ajouter trois choix
+dès le départ. Si on veut en ajouter plus tard en modifiant la question,
+c'est ici qu'ils seront créés.
 
-## Cleanup {#cleanup}
+## Faites le ménage {#cleanup}
 
-In order for `yarn tsc` or `git push` to succeed, you'll need to delete
-`app/choices/mutations/createChoice.ts` (unused) or update the
-CreateChoice zod schema to include the required fields.
+Afin que la commande `yarn tsc` ou `git push` s'exécute sans erreur, vous
+devez supprimer `app/choices/mutations/createChoice.ts` (non utilisé) ou
+modifier le schema zod `CreateChoice` afin qu'il inclue les champs requis.
 
 ## Conclusion {#conclusion}
 
