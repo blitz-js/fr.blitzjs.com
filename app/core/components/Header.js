@@ -89,9 +89,9 @@ const Header = ({
         target="_blank"
         className="underline"
       >
-        Announcing Flightcontrol
+        Flightcontrol disponible d&egrave;s maintenant
       </a>{" "}
-      - Optimized Deployment for Fullstack Blitz.js and Next.js 🚀
+      - D&eacute;ploiement optimis&eacute; pour Blitz.js and Next.js en mode fullstack 🚀
     </div>
   )
 
@@ -101,12 +101,12 @@ const Header = ({
       href: isDesktop ? "/docs/get-started" : "/docs",
     },
     {
-      name: "Showcase",
+      name: "Vitrine",
       href: "/showcase",
     },
-    {name: "Releases", href: "https://github.com/blitz-js/blitz/releases"},
-    {name: "Swag", href: "https://store.blitzjs.com"},
-    {name: "Flightcontrol Cloud", href: "https://flightcontrol.dev"},
+    {name: "Versions", href: "https://github.com/blitz-js/blitz/releases"},
+    {name: "Goodies", href: "https://store.blitzjs.com"},
+    {name: "Flightcontrol", href: "https://flightcontrol.dev"},
   ]
 
   return (
@@ -117,7 +117,7 @@ const Header = ({
           <div className="pr-8 xl:pr-12 lg:-mt-3">
             <Link href="/">
               <a className="w-10 overflow-hidden md:w-auto">
-                <span className="sr-only">Blitz home page</span>
+                <span className="sr-only">Page d&apos;accueil Blitz</span>
                 {useColoredLogo && (
                   <ColoredLogo className="w-auto h-12 py-2 fill-current inline dark:hidden" />
                 )}
@@ -147,7 +147,7 @@ const Header = ({
               rel="noopener noreferrer"
               href="https://github.com/sponsors/blitz-js"
             >
-              <FaHeart className="inline mr-1 align-text-top" /> Sponsor
+              <FaHeart className="inline mr-1 align-text-top" /> Parrainages
               <FiArrowUpRight size="0.70rem" className="opacity-50 absolute top-2 right-0" />
             </NavLink>
           </div>
@@ -189,7 +189,8 @@ const Header = ({
               rel="noopener noreferrer"
               href="https://github.com/sponsors/blitz-js"
             >
-              <FaHeart size="1rem" className="inline mr-1 mb-1 align-text-center" /> Donate/Sponsor
+              <FaHeart size="1rem" className="inline mr-1 mb-1 align-text-center" />{" "}
+              Dons/Parrainages
               <HiExternalLink size="1rem" className="opacity-70 absolute top-3 right-0" />
             </NavLink>
             <div className="py-2">

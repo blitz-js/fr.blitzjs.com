@@ -1,7 +1,7 @@
 [
   {
     "title": {
-      "title": "Introduction",
+      "title": "Présentation",
       "iconPath": "/img/introduction.svg",
       "iconDarkPath": "/img/introduction-white.svg"
     },
@@ -17,7 +17,7 @@
   },
   {
     "title": {
-      "title": "Community",
+      "title": "Communauté",
       "iconPath": "/img/people-purple.svg",
       "iconDarkPath": "/img/people-white.svg"
     },
@@ -33,7 +33,7 @@
   },
   {
     "title": {
-      "title": "Basics",
+      "title": "Bases",
       "iconPath": "/img/basics.svg",
       "iconDarkPath": "/img/basics-white.svg"
     },
@@ -75,7 +75,7 @@
   },
   {
     "title": {
-      "title": "Routing",
+      "title": "Routage",
       "iconPath": "/img/routing.svg",
       "iconDarkPath": "/img/routing-white.svg"
     },
@@ -96,7 +96,7 @@
   },
   {
     "title": {
-      "title": "Auth",
+      "title": "Authentification",
       "iconPath": "/img/shield-purple.svg",
       "iconDarkPath": "/img/shield-white.svg"
     },
@@ -111,7 +111,7 @@
   },
   {
     "title": {
-      "title": "Database",
+      "title": "Base de données",
       "iconPath": "/img/database.svg",
       "iconDarkPath": "/img/database-white.svg"
     },
@@ -119,7 +119,7 @@
   },
   {
     "title": {
-      "title": "Queries & Mutations",
+      "title": "Requêtes & Mutations",
       "iconPath": "/img/queries.svg",
       "iconDarkPath": "/img/queries-white.svg"
     },
@@ -138,7 +138,7 @@
   },
   {
     "title": {
-      "title": "Backend Architecture",
+      "title": "Architecture du serveur",
       "iconPath": "/img/mutations.svg",
       "iconDarkPath": "/img/mutations-white.svg"
     },
@@ -152,7 +152,7 @@
   },
   {
     "title": {
-      "title": "Deploying to Production",
+      "title": "Déploiement en Production",
       "iconPath": "/img/deploying-to-production.svg",
       "iconDarkPath": "/img/deploying-to-production-white.svg"
     },
@@ -160,7 +160,7 @@
   },
   {
     "title": {
-      "title": "Recipes",
+      "title": "Recettes",
       "iconPath": "/img/recipe-purple.svg",
       "iconDarkPath": "/img/recipe-white.svg"
     },
@@ -185,7 +185,7 @@
   },
   {
     "title": {
-      "title": "CLI",
+      "title": "Invite de commandes",
       "iconPath": "/img/terminal-purple.svg",
       "iconDarkPath": "/img/terminal-white.svg"
     },
@@ -208,7 +208,7 @@
   },
   {
     "title": {
-      "title": "Templates",
+      "title": "Modèles",
       "iconPath": "/img/template-purple.svg",
       "iconDarkPath": "/img/template-white.svg"
     },
