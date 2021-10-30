@@ -217,7 +217,7 @@ Blitz vous permet de générer le code nécéssaire pour une multitude de
 situations via la commande [`generate`](./cli-generate). Nous allons
 l'utiliser afin de générer deux modèles : `Question` et `Choice`. Une
 `Question` consiste du texte de la question ainsi qu'une liste de choix de
-réponse. Un `Choice` contient le texte du choice, un nombre de votes et la
+réponse. Un `Choice` contient le texte du choix, un nombre de votes et la
 question à laquelle il fait référence. Blitz s'occupe de générer un `id`
 unique, la date de création ainsi que la date de la dernière modification
 pour chacun des modèle.
@@ -290,7 +290,7 @@ blitz generate resource choice text votes:int:default=0 belongsTo:question
 Si vous obtenez une erreur, exécutez `blitz prisma format`
 
 Veuillez noter que ceci ne requiert pas de migration puisque nous n'avons
-pas encore ajouté le champ `Choix` au modèle `Question`. Nous allons donc
+pas encore ajouté le champ `Choice` au modèle `Question`. Nous allons donc
 choisir `false` lorsqu'on nous demandera de démarrer une migration :
 
 ```
@@ -667,7 +667,7 @@ puisque nous en aurons besoin dans la prochaine étape pour notre
 + export const CreateQuestion = z
     .object({
       text: z.string().nonempty({message: "You must enter a question."}),
-+     choice: z.array(z.object({texte: z.string()})),
++     choices: z.array(z.object({text: z.string()})),
     })
 
 export default resolver.pipe(
@@ -678,7 +678,7 @@ export default resolver.pipe(
 +   const question = await db.question.create({
 +     data: {
 +       ...input,
-+       choice: {create: input.choice},
++       choices: {create: input.choices},
 +     },
 +   })
 
@@ -706,7 +706,7 @@ l'utiliser dans le schema `QuestionForm` de la prochaine étape.
 Naviguez vers `app/pages/questions/new.tsx` et importez
 `createQuestionSchema` depuis `app/pages/questions/validations.ts` pour
 l'utiliser en tant que schema de `QuestionForm`. Nous devons aussi ajouter
-des valeurs par défaut `{{texte: "", choix: []}}` pour nos champs de
+des valeurs par défaut `{{text: "", choices: []}}` pour nos champs de
 `QuestionForm`
 
 ```diff
@@ -769,7 +769,7 @@ export default resolver.pipe(
 -   const question = await db.question.findFirst({where: {id}})
 +   const question = await db.question.findFirst({
 +     where: {id},
-+     include: {choice: true},
++     include: {choices: true},
 +   })
 
     if (!question) throw new NotFoundError()
@@ -800,7 +800,7 @@ export default resolver.pipe(
           ...paginateArgs,
           where,
           orderBy,
-+         include: {choice: true},
++         include: {choices: true},
         }),
     })
 
@@ -858,9 +858,9 @@ Pour commencer, nous allons améliorer cette page.
 
 ```tsx
 <ul>
-  {question.choix.map((choix) => (
-    <li key={choix.id}>
-      {choix.text} - {choix.votes} votes
+  {question.choices.map((choice) => (
+    <li key={choice.id}>
+      {choice.text} - {choice.votes} votes
     </li>
   ))}
 </ul>
@@ -993,8 +993,8 @@ export const Question = () => {
         <ul>
           {question.choices.map((choice) => (
             <li key={choice.id}>
-              {choice.texte} - {choice.votes} votes
-              <button onClick={() => handleVote(choice.id)}>Voter</button>
+              {choice.text} - {choice.votes} votes
+              <button onClick={() => handleVote(choice.id)}>Vote</button>
             </li>
           ))}
         </ul>
