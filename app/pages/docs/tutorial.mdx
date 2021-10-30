@@ -25,18 +25,18 @@ créer votre application en utilisant la commande `cd`. Ensuite, exécutez
 la commande suivante :
 
 ```sh
-blitz new mon-appli-blitz
+blitz new my-blitz-app
 ```
 
-Blitz s'occupera de créer un dossier `mon-appli-blitz` dans le répertoire.
-Il vous sera également demandé de choisir un module de gestion de
-formulaire. Pour les exemples suivant, choisissez le module recommandé
+Blitz s'occupera de créer un dossier `my-blitz-app` dans le répertoire. Il
+vous sera également demandé de choisir un module de gestion de formulaire.
+Pour les exemples suivant, choisissez le module recommandé
 `React Final Form`.
 
 Jettons un oeil à ce que `blitz new` a créé :
 
 ```
-mon-appli-blitz/
+my-blitz-app/
 ├── app/
 │   ├── api/
 │   ├── auth/
@@ -134,8 +134,8 @@ Ces fichiers sont :
 
 ## Démarrez le serveur de développement {#the-development-server}
 
-Assurez-vous d'être dans le répertoire `mon-appli-blitz` avant d'exécuter
-la commande suivante :
+Assurez-vous d'être dans le répertoire `my-blitz-app` avant d'exécuter la
+commande suivante :
 
 ```sh
 blitz dev
@@ -145,12 +145,12 @@ Vous devriez voir le message suivant dans votre terminal :
 
 ```sh
 ✔ Compiled
-Loaded env from /private/tmp/mon-appli-blitz/.env
+Loaded env from /private/tmp/my-blitz-app/.env
 warn  - You have enabled experimental feature(s).
 warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use them at your own risk.
 
 ready - started server on 0.0.0.0:3000, url: http://localhost:3000
-info  - Using external babel configuration from /mon-appli-blitz/babel.config.js
+info  - Using external babel configuration from /my-blitz-app/babel.config.js
 event - compiled successfully
 ```
 
@@ -181,9 +181,9 @@ composant `Home` par ceci :
 const Home: BlitzPage = () => {
   return (
     <div>
-      <h1>Bonjour, Blitz!</h1>
+      <h1>Hello, world!</h1>
 
-      <Suspense fallback="Chargement...">
+      <Suspense fallback="Loading...">
         <UserInfo />
       </Suspense>
     </div>
@@ -225,7 +225,7 @@ pour chacun des modèle.
 #### Premièrement, nous allons générer le modèle `Question` :
 
 ```sh
-blitz generate all question texte:string
+blitz generate all question text:string
 ```
 
 Lorsque demandé, appuyez sur la touche **Entrée** afin d'exécuter
@@ -253,7 +253,7 @@ CREATE    app/questions/mutations/updateQuestion.ts
 >   id        Int      @id @default(autoincrement())
 >   createdAt DateTime @default(now())
 >   updatedAt DateTime @updatedAt
->   texte     String
+>   text      String
 > }
 >
 
@@ -262,11 +262,11 @@ Environment variables loaded from .env
 Prisma schema loaded from db/schema.prisma
 Datasource "db": SQLite database "db.sqlite" at "file:./db.sqlite"
 
-✔ Enter a name for the new migration: … ajout question
+✔ Enter a name for the new migration: … add question
 The following migration(s) have been created and applied from new schema changes:
 
 migrations/
-  └─ 20210722070215_ajout_question/
+  └─ 20210722070215_add_question/
     └─ migration.sql
 
 Your database is now in sync with your schema.
@@ -284,7 +284,7 @@ Cette fois, nous allons utiliser l'option `resource` puisque nous ne
 voulons pas générer de pages pour le modèle `Choice`:
 
 ```sh
-blitz generate resource choice texte votes:int:default=0 belongsTo:question
+blitz generate resource choice text votes:int:default=0 belongsTo:question
 ```
 
 Si vous obtenez une erreur, exécutez `blitz prisma format`
@@ -306,7 +306,7 @@ CREATE    app/choices/mutations/updateChoice.ts
 >   id         Int      @default(autoincrement()) @id
 >   createdAt  DateTime @default(now())
 >   updatedAt  DateTime @updatedAt
->   texte      String
+>   text       String
 >   votes      Int      @default(0)
 >   question   Question @relation(fields: [questionId], references: [id])
 >   questionId Int
@@ -317,7 +317,7 @@ CREATE    app/choices/mutations/updateChoice.ts
 
 #### Finalement, ajoutez une relation vers `Choice` à `Question`.
 
-Ouvrez `db/schema.prisma` et ajoutez `choix Choice[]` au modèle
+Ouvrez `db/schema.prisma` et ajoutez `choices Choice[]` au modèle
 `Question`.
 
 ```diff
@@ -325,8 +325,8 @@ model Question {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  texte     String
-+ choix     Choice[]
+  text      String
++ choices   Choice[]
 }
 ```
 
@@ -337,7 +337,7 @@ de données :
 blitz prisma migrate dev
 ```
 
-Encore une fois, choisissez un nom pour la migration, par exemple : "ajout
+Encore une fois, choisissez un nom pour la migration, par exemple : "add
 choice".
 
 ```
@@ -345,11 +345,11 @@ Environment variables loaded from .env
 Prisma schema loaded from db/schema.prisma
 Datasource "db": SQLite database "db.sqlite" at "file:./db.sqlite"
 
-✔ Name of migration … ajout choice
+✔ Name of migration … add choice
 The following migration(s) have been created and applied from new schema changes:
 
 migrations/
-  └─ 20210412175528_ajout_choice/
+  └─ 20210412175528_add_choice/
     └─ migration.sql
 
 Your database is now in sync with your schema.
@@ -375,7 +375,7 @@ Lorsque c'est fait, essayez le client de base de données :
 []
 
 # Créez une nouvelle Question :
-⚡ > let q = await db.question.create({data: {texte: "Quoi de neuf?"}})
+⚡ > let q = await db.question.create({data: {text: "What's new?"}})
 undefined
 
 # Observer l'objet entier :
@@ -384,20 +384,20 @@ undefined
   id: 1,
   createdAt: 2020-06-15T15:06:14.959Z,
   updatedAt: 2020-06-15T15:06:14.959Z,
-  texte: "Quoi de neuf?"
+  text: "What's new?"
 }
 
 # Ou accédez à une propriété individuelle de l'objet :
 ⚡ > q.texte
-"Quoi de neuf?"
+"What's new?"
 
 # Modifiez des valeurs en utilisant la fonction de mise à jour (update):
-⚡ > q = await db.question.update({where: {id: 1}, data: {texte: "Ça va?"}})
+⚡ > q = await db.question.update({where: {id: 1}, data: {text: "What's up?"}})
 {
   id: 1,
   createdAt: 2020-06-15T15:06:14.959Z,
   updatedAt: 2020-06-15T15:13:17.394Z,
-  texte: "Ça va?"
+  text: "What's up?"
 }
 
 # db.question.findMany() affiche maintenant toutes les questions enregistrées :
@@ -407,7 +407,7 @@ undefined
     id: 1,
     createdAt: 2020-06-15T15:06:14.959Z,
     updatedAt: 2020-06-15T15:13:17.394Z,
-    texte: "Ça va?"
+    text: "What's up?"
   }
 ]
 ```
@@ -488,7 +488,7 @@ export const QuestionsList = () => {
 
 Comme vous pouvez le voir, il ne fonctionnera pas puisqu'il utilise
 l'attribut `name` de `Question` mais ce champ n'existe pas! Nous devons
-remplacer `question.name` par `question.texte`.
+remplacer `question.name` par `question.text`.
 
 ```diff
 // app/pages/questions/index.tsx
@@ -519,7 +519,7 @@ export const QuestionsList = () => {
           <li key={question.id}>
             <Link href={`/questions/${question.id}`}>
 -              <a>{question.name}</a>
-+              <a>{question.texte}</a>
++              <a>{question.text}</a>
             </Link>
           </li>
         ))}
@@ -538,8 +538,7 @@ export const QuestionsList = () => {
 
 Ensuite, faisons la même chose dans
 `app/questions/components/QuestionForm.tsx`. Dans le formulaire de
-soumission, remplacez la valeur `name` de `LabeledTextField` par
-`"texte"`.
+soumission, remplacez la valeur `name` de `LabeledTextField` par `"text"`.
 
 ```diff
 export function QuestionForm<S extends z.ZodType<any, any>>(
@@ -548,7 +547,7 @@ export function QuestionForm<S extends z.ZodType<any, any>>(
   return (
     <Form<S> {...props}>
 -     <LabeledTextField name="name" label="Name" placeholder="Name" />
-+     <LabeledTextField name="texte" label="Texte" placeholder="Texte" />
++     <LabeledTextField name="text" label="Text" placeholder="Text" />
     </Form>
   )
 }
@@ -557,7 +556,7 @@ export function QuestionForm<S extends z.ZodType<any, any>>(
 ### La mutation `createQuestion` {#create-question-mutation}
 
 Dans `app/questions/mutations/createQuestion.ts`, nous devons modifier le
-schema de validation zod de `CreateQuestion` afin qu'il utilise `texte`
+schema de validation zod de `CreateQuestion` afin qu'il utilise `text`
 plutôt que `name`.
 
 ```diff
@@ -566,7 +565,7 @@ plutôt que `name`.
 const CreateQuestion = z
   .object({
 -   name: z.string(),
-+   texte: z.string(),
++   text: z.string(),
   })
 // ...
 ```
@@ -574,7 +573,7 @@ const CreateQuestion = z
 ### La mutation `updateQuestion` {#update-question-mutation}
 
 Dans `app/questions/mutations/updateQuestion.ts`, nous devons modifier le
-schema de validation zod de `CreateQuestion` afin qu'il utilise `texte`
+schema de validation zod de `CreateQuestion` afin qu'il utilise `text`
 plutôt que `name`.
 
 ```diff
@@ -584,7 +583,7 @@ const UpdateQuestion = z
   .object({
     id: z.number(),
 -   name: z.string(),
-+   texte: z.string(),
++   text: z.string(),
   })
 ```
 
@@ -646,10 +645,10 @@ export function QuestionForm<S extends z.ZodType<any, any>>(
 ) {
   return (
     <Form<S> {...props}>
-      <LabeledTextField name="texte" label="Texte" placeholder="Texte" />
-+     <LabeledTextField name="choix.0.texte" label="Choix 1" />
-+     <LabeledTextField name="choix.1.texte" label="Choix 2" />
-+     <LabeledTextField name="choix.2.texte" label="Choix 3" />
+      <LabeledTextField name="text" label="Text" placeholder="Text" />
++     <LabeledTextField name="choices.0.text" label="Choice 1" />
++     <LabeledTextField name="choices.1.text" label="Choice 2" />
++     <LabeledTextField name="choices.2.text" label="Choice 3" />
     </Form>
   )
 }
@@ -667,8 +666,8 @@ puisque nous en aurons besoin dans la prochaine étape pour notre
 
 + export const CreateQuestion = z
     .object({
-      texte: z.string().nonempty({message: "Veuillez entrer une question."}),
-+     choix: z.array(z.object({texte: z.string()})),
+      text: z.string().nonempty({message: "You must enter a question."}),
++     choice: z.array(z.object({texte: z.string()})),
     })
 
 export default resolver.pipe(
@@ -679,7 +678,7 @@ export default resolver.pipe(
 +   const question = await db.question.create({
 +     data: {
 +       ...input,
-+       choix: {create: input.choix},
++       choice: {create: input.choice},
 +     },
 +   })
 
@@ -717,14 +716,14 @@ des valeurs par défaut `{{texte: "", choix: []}}` pour nos champs de
 
 
       <QuestionForm
-        submitText="Créer une Question"
+        submitText="Create Question"
 -       // TODO use a zod schema for form validation
 -       //  - Tip: extract mutation's schema into a shared `validations.ts` file and
 -       //         then import and use it here
 -       // schema={createQuestion}
 -       // initialValues={{ }}
 +       schema={createQuestionSchema}
-+       initialValues={{texte: "", choix: []}}
++       initialValues={{text: "", choices: []}}
         onSubmit={async (values) => {
           try {
             const question = await createQuestionMutation(values)
@@ -770,7 +769,7 @@ export default resolver.pipe(
 -   const question = await db.question.findFirst({where: {id}})
 +   const question = await db.question.findFirst({
 +     where: {id},
-+     include: {choix: true},
++     include: {choice: true},
 +   })
 
     if (!question) throw new NotFoundError()
@@ -801,7 +800,7 @@ export default resolver.pipe(
           ...paginateArgs,
           where,
           orderBy,
-+         include: {choix: true},
++         include: {choice: true},
         }),
     })
 
@@ -828,12 +827,12 @@ sous le composant `Link` dans `QuestionsList` :
   questions.map((question) => (
     <li key={question.id}>
       <Link href={`/questions/${question.id}`}>
-        <a>{question.texte}</a>
+        <a>{question.text}</a>
       </Link>
 +     <ul>
-+       {question.choix.map((choice) => (
-+         <li key={choix.id}>
-+           {choix.texte} - {choix.votes} votes
++       {question.choices.map((choice) => (
++         <li key={choice.id}>
++           {choice.text} - {choice.votes} votes
 +         </li>
 +       ))}
 +     </ul>
@@ -852,7 +851,7 @@ Naviguez vers `app/pages/questions/[questionId].tsx` dans votre éditeur.
 Pour commencer, nous allons améliorer cette page.
 
 1. Remplacez `<h1>Question {question.id}</h1>` par
-   `<h1>{question.texte}</h1>`.
+   `<h1>{question.text}</h1>`.
 
 2. Supprimez l'élément `pre` et copiez la liste de choix que nous avons
    définie auparavant :
@@ -861,7 +860,7 @@ Pour commencer, nous allons améliorer cette page.
 <ul>
   {question.choix.map((choix) => (
     <li key={choix.id}>
-      {choix.texte} - {choix.votes} votes
+      {choix.text} - {choix.votes} votes
     </li>
   ))}
 </ul>
@@ -910,9 +909,9 @@ changements suivants :
 Dans notre `li`, ajoutez un `button` comme ceci :
 
 ```tsx
-<li key={choix.id}>
-  {choix.texte} - {choix.votes} votes
-  <button>Voter</button>
+<li key={choice.id}>
+  {choice.text} - {choice.votes} votes
+  <button>Vote</button>
 </li>
 ```
 
@@ -959,7 +958,7 @@ fonction `refetch` que nous utilisons dans `handleVote`.
 Finalement, disons à notre nouveau `button` d'exécuter cette fonction!
 
 ```tsx
-<button onClick={() => handleVote(choice.id)}>Voter</button>
+<button onClick={() => handleVote(choice.id)}>Vote</button>
 ```
 
 Le composant `Question` devrait maintenant ressembler à ceci :
@@ -990,31 +989,31 @@ export const Question = () => {
       </Head>
 
       <div>
-        <h1>{question.texte}</h1>
+        <h1>{question.text}</h1>
         <ul>
-          {question.choix.map((choix) => (
-            <li key={choix.id}>
-              {choix.texte} - {choix.votes} votes
-              <button onClick={() => handleVote(choix.id)}>Voter</button>
+          {question.choices.map((choice) => (
+            <li key={choice.id}>
+              {choice.texte} - {choice.votes} votes
+              <button onClick={() => handleVote(choice.id)}>Voter</button>
             </li>
           ))}
         </ul>
 
         <Link href={`/questions/${question.id}/edit`}>
-          <a>Modifier</a>
+          <a>Edit</a>
         </Link>
 
         <button
           type="button"
           onClick={async () => {
-            if (window.confirm("Cette question sera supprimée")) {
+            if (window.confirm("This will be deleted")) {
               await deleteQuestionMutation({ id: question.id })
               router.push("/questions")
             }
           }}
           style={{ marginLeft: "0.5rem" }}
         >
-          Supprimer
+          Delete
         </button>
       </div>
     </>
@@ -1041,9 +1040,9 @@ import * as z from "zod"
 const UpdateQuestion = z
   .object({
     id: z.number(),
-    texte: z.string(),
-+   choix: z.array(
-+     z.object({id: z.number().optional(), texte: z.string()}),
+    text: z.string(),
++   choices: z.array(
++     z.object({id: z.number().optional(), text: z.string()}),
 +   ),
   })
 
@@ -1056,18 +1055,18 @@ export default resolver.pipe(
 +     where: {id},
 +     data: {
 +       ...data,
-+       choix: {
-+         upsert: data.choix.map((choix) => ({
++       choices: {
++         upsert: data.choices.map((choice) => ({
 +           // Il s'agit d'un bogue Prisma,
 +           // puisque `|| 0` ne devrait pas être nécessaire
-+           where: {id: choix.id || 0},
-+           create: {text: choix.texte},
-+           update: {text: choix.texte},
++           where: {id: choice.id || 0},
++           create: {text: choice.text},
++           update: {text: choice.text},
 +         })),
 +       },
 +     },
 +     include: {
-+       choix: true,
++       choices: true,
 +     },
 +   })
 
