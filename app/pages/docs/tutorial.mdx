@@ -3,7 +3,7 @@ title: Tutoriel
 sidebar_label: Tutoriel
 ---
 
-Dans ce tutoriel, nous allons vous apprendre à créer use simple
+Dans ce tutoriel, nous allons vous apprendre à créer une simple
 application de vote.
 
 Ce guide suppose que vous avez déjà [installé Blitz](./get-started). Vous
@@ -15,7 +15,7 @@ blitz -v
 ```
 
 Si Blitz est bien installé, vous devriez voir le numéro de la version de
-votre installation. Sinon il ne l'est pas, vous devriez voir une erreur
+votre installation. S'il ne l'est pas, vous devriez voir une erreur
 comme "command not found: blitz".
 
 ## Créez une nouvelle application {#creating-a-new-app}
@@ -30,7 +30,7 @@ blitz new my-blitz-app
 
 Blitz s'occupera de créer un dossier `my-blitz-app` dans le répertoire. Il
 vous sera également demandé de choisir un module de gestion de formulaire.
-Pour les exemples suivant, choisissez le module recommandé
+Pour les exemples suivants, choisissez le module recommandé
 `React Final Form`.
 
 Jettons un oeil à ce que `blitz new` a créé :
@@ -117,8 +117,8 @@ Ces fichiers sont :
   Si vous voulez créer un nouveau modèle ou lancer une migration, c'est
   ici que vous trouverez ce qu'il vous faut.
 
-- Le répertoire `public/` contient toutes vos resources statiques. Si
-  votre application nécéssite des images, documents ou vidéos, c'est ici
+- Le répertoire `public/` contient toutes vos ressources statiques. Si
+  votre application nécessite des images, documents ou vidéos, c'est ici
   que vous devriez les stocker.
 
 - Les fichiers `.babelrc.js`, `.env`, etc. aussi connus sous le nom de
@@ -156,12 +156,12 @@ event - compiled successfully
 
 Maintenant que le serveur est démarré, visitez
 [localhost:3000](http://localhost:3000) avec votre navigateur web. Vous
-verrez une page de bienvenue avec le logo Blitz. Tout fonctionne!
+verrez une page de bienvenue avec le logo Blitz. Tout fonctionne !
 
 ## Créez un compte utilisateur {#sign-up-as-a-user}
 
 Les applications Blitz comprennent un système de gestion d'utilisateurs
-par défaut, essayons le! Cliquez sur le bouton **Sign Up**. Entrez
+par défaut, essayons-le ! Cliquez sur le bouton **Sign Up**. Entrez
 n'importe quelle adresse email et mot de passe et cliquez sur **Create
 Account**. Vous serez ensuite redirigé vers la page d'acceuil où vous
 pourrez apercevoir votre `id` et votre `role`.
@@ -200,7 +200,7 @@ section.
 
 ## Configurez une base de données {#database-setup}
 
-Bonne nouvelle! Une base de données SQLite est déjà configurée! Vous
+Bonne nouvelle ! Une base de données SQLite est déjà configurée ! Vous
 pouvez exécuter `blitz prisma studio` dans votre terminal pour explorer
 vos tables et leurs champs via une interface web.
 
@@ -213,14 +213,14 @@ allons continuer avec SQLite.
 
 ## Générez le code de vos modèles {#scaffolding-code-for-our-models}
 
-Blitz vous permet de générer le code nécéssaire pour une multitude de
+Blitz vous permet de générer le code nécessaire pour une multitude de
 situations via la commande [`generate`](./cli-generate). Nous allons
 l'utiliser afin de générer deux modèles : `Question` et `Choice`. Une
-`Question` consiste du texte de la question ainsi qu'une liste de choix de
-réponse. Un `Choice` contient le texte du choix, un nombre de votes et la
+`Question` comprend la question sous forme de texte ainsi qu'une liste de choix de
+réponse. Un `Choice` contient le choix sous forme de texte, un nombre de votes et la
 question à laquelle il fait référence. Blitz s'occupe de générer un `id`
 unique, la date de création ainsi que la date de la dernière modification
-pour chacun des modèle.
+pour chacun des modèles.
 
 #### Premièrement, nous allons générer le modèle `Question` :
 
@@ -229,7 +229,7 @@ blitz generate all question text:string
 ```
 
 Lorsque demandé, appuyez sur la touche **Entrée** afin d'exécuter
-`prisma migrate` pour mettre votre schema de base de données à jour avec
+`prisma migrate` pour mettre votre schéma de base de données à jour avec
 le modèle nouvellement créé. Vous devrez entrer un nom pour cette
 migration, par exemple : "ajout question".
 
@@ -291,7 +291,7 @@ Si vous obtenez une erreur, exécutez `blitz prisma format`
 
 Veuillez noter que ceci ne requiert pas de migration puisque nous n'avons
 pas encore ajouté le champ `Choice` au modèle `Question`. Nous allons donc
-choisir `false` lorsqu'on nous demandera de démarrer une migration :
+choisir `false` lorsque demandé de démarrer une migration :
 
 ```
 CREATE    app/choices/queries/getChoice.ts
@@ -356,12 +356,12 @@ Your database is now in sync with your schema.
 ```
 
 Notre base de données est maintenant prête à être utilisée et un client
-Prisma a également été généré pour nous. Allons l'essayer!
+Prisma a également été généré pour nous. Allons l'essayer !
 
 ## Explorez le client de base de données Prisma {#playing-with-the-prisma-database-client}
 
 Maintenant, utilisons la console interactive Blitz pour essayer le client
-Prisma fournit par Blitz. Pour débuter, exécutez cette commande :
+Prisma fourni par Blitz. Pour débuter, exécutez cette commande :
 
 ```sh
 blitz console
@@ -418,13 +418,13 @@ undefined
 
 Avant de démarrer l'application de nouveau, nous devons personnaliser une
 partie du code qui a été généré pour nous. Dans une version future, ces
-changements ne seront pas nécéssaires mais pour l'instant ils sont requis
+changements ne seront pas nécessaires mais pour l'instant, ils sont requis
 afin de régler quelques bogues.
 
 </Card>
 
 Le contenu des pages générées ne prend pas en compte les attributs définis
-lors de la création des modèles. Ce sera le cas bientôt, mais en
+lors de la création des modèles. Ce sera bientôt le cas, mais en
 attendant, corrigeons le tout.
 
 ### Pages de Question {#question-pages}
@@ -434,7 +434,7 @@ attendant, corrigeons le tout.
   "Remove the following section once `generate` uses actual model attributes"
 
 Ouvrez maintenant `app/pages/questions/index.tsx`. Vous remarquerez que le
-composant `QuestionsList` à été généré dans une étape précédente :
+composant `QuestionsList` a été généré dans une étape précédente :
 
 ```tsx
 // app/pages/questions/index.tsx
@@ -487,7 +487,7 @@ export const QuestionsList = () => {
 ```
 
 Comme vous pouvez le voir, il ne fonctionnera pas puisqu'il utilise
-l'attribut `name` de `Question` mais ce champ n'existe pas! Nous devons
+l'attribut `name` de `Question` mais ce champ n'existe pas ! Nous devons
 remplacer `question.name` par `question.text`.
 
 ```diff
@@ -573,7 +573,7 @@ const CreateQuestion = z
 ### La mutation `updateQuestion` {#update-question-mutation}
 
 Dans `app/questions/mutations/updateQuestion.ts`, nous devons modifier le
-schema de validation zod de `CreateQuestion` afin qu'il utilise `text`
+schéma de validation zod de `UpdateQuestion` afin qu'il utilise `text`
 plutôt que `name`.
 
 ```diff
@@ -591,7 +591,7 @@ const UpdateQuestion = z
 
 [//]: # "Remove this section once Prisma supports cascading deletes"
 
-Pour le moment Prisma ne nous permet pas de supprimer des données en
+Pour le moment, Prisma ne nous permet pas de supprimer des données en
 cascade. Dans le cadre de ce tutoriel, cela veut dire que lorsque nous
 supprimons une question, les choix associés à cette question ne seront pas
 supprimés automatiquement. Nous devons temporairement modifier la mutation
@@ -625,14 +625,14 @@ avant même de supprimer la question.
 
 #### Essayez de créer, modifier et supprimer des questions
 
-Parfait! Assurez-vous que votre application est démarrée. Si ce n'est pas
+Parfait ! Assurez-vous que votre application est démarrée. Si ce n'est pas
 le cas, exécutez `blitz dev` dans votre terminal et visitez
 `localhost:3000/questions`. Essayez de créer quelques questions, de les
 modifier et de les supprimer.
 
 ## Ajoutez des choix au formulaire de création de question {#adding-choices-to-the-question-form}
 
-Vous vous débrouillez bien jusqu'ici! Nous avons maintenant besoin
+Vous vous débrouillez bien jusqu'ici ! Nous avons maintenant besoin
 d'ajouter des choix à nos questions. Naviguez vers
 `app/questions/components/QuestionForm.tsx` dans votre éditeur.
 
@@ -655,9 +655,9 @@ export function QuestionForm<S extends z.ZodType<any, any>>(
 ```
 
 Naviguez vers `app/questions/mutations/createQuestion.ts` et modifiez le
-schema zod afin qu'il accepte ces nouveaux choix. Nous devons également
+schéma zod afin qu'il accepte ces nouveaux choix. Nous devons également
 modifier l'appel à la fonction `db.question.create()` pour créer ces
-choix. Ensuite, nous devons exporter le schema zod de `CreateQuestion`
+choix. Ensuite, nous devons exporter le schéma zod de `CreateQuestion`
 puisque nous en aurons besoin dans la prochaine étape pour notre
 `QuestionForm`.
 
@@ -687,13 +687,13 @@ export default resolver.pipe(
 )
 ```
 
-Ensuite nous allons créer un fichier séparé où nous allons stocker la
-schema de validation zod pour `QuestionForm`. Dans le répertoire
+Ensuite, nous allons créer un fichier séparé où nous allons stocker le
+schéma de validation zod pour `QuestionForm`. Dans le répertoire
 `app/pages/questions`, créez un fichier nommé `validation.ts` et importez
 `CreateQuestion` depuis `app/questions/mutations/createQuestion.ts`. Créez
 une nouvelle variable nommée `createQuestionSchema` et assignez-lui la
 valeur de `CreateQuestion`. Vous pouvez maintenant l'exporter pour
-l'utiliser dans le schema `QuestionForm` de la prochaine étape.
+l'utiliser dans le schéma `QuestionForm` de la prochaine étape.
 
 ```diff
 // app/pages/questions/validations.ts
@@ -705,7 +705,7 @@ l'utiliser dans le schema `QuestionForm` de la prochaine étape.
 
 Naviguez vers `app/pages/questions/new.tsx` et importez
 `createQuestionSchema` depuis `app/pages/questions/validations.ts` pour
-l'utiliser en tant que schema de `QuestionForm`. Nous devons aussi ajouter
+l'utiliser en tant que schéma de `QuestionForm`. Nous devons aussi ajouter
 des valeurs par défaut `{{text: "", choices: []}}` pour nos champs de
 `QuestionForm`
 
@@ -741,14 +741,14 @@ des valeurs par défaut `{{text: "", choices: []}}` pour nos champs de
 #### Essayez vos changements
 
 Vous pouvez maintenant visiter `localhost:3000/questions/new` et créer une
-question à choix multiples!
+question à choix multiples !
 
 ## Affichez les choix {#listing-choices}
 
 Prenons une courte pause. Retournez à `localhost:3000/questions` dans
 votre navigateur et regardez toutes les questions que vous avez créées.
 Que diriez-vous de pouvoir lire tous les choix disponibles pour chaque
-question au même endroit? Premièrement vous devons personnaliser les
+question au même endroit ? Premièrement, nous devons personnaliser les
 requêtes de questions. Avec Prisma, vous devez manuellement spécifier
 lorsque vous désirez récupérer une relation imbriquée. Modifiez vos
 fichiers `getQuestion.ts` et `getQuestions.ts` afin qu'ils ressemblent à
@@ -842,10 +842,10 @@ sous le composant `Link` dans `QuestionsList` :
 // ...
 ```
 
-Vérifiez le tout en visitant `/questions` avec votre navigateur.
-**Magie!**
+Vérifiez-le tout en visitant `/questions` avec votre navigateur.
+**Magie !**
 
-## Permettez aux utilisateurs de voter! {#let-people-vote-on-questions}
+## Permettez aux utilisateurs de voter ! {#let-people-vote-on-questions}
 
 Naviguez vers `app/pages/questions/[questionId].tsx` dans votre éditeur.
 Pour commencer, nous allons améliorer cette page.
@@ -867,7 +867,7 @@ Pour commencer, nous allons améliorer cette page.
 ```
 
 Si vous retournez dans votre navigateur, la page devrait maintenant
-ressembler à ceci!
+ressembler à ceci !
 
 <img
   width="567"
@@ -875,10 +875,10 @@ ressembler à ceci!
   src="https://user-images.githubusercontent.com/24858006/80387990-3c3d8b80-88a1-11ea-956a-5be85f1e8f12.png"
 />
 
-#### Il est temps de voter!
+#### Il est temps de voter !
 
-Premièrement nous devons ouvrir `app/choices/mutations/updateChoice.ts`,
-modifier le schema zod et ajouter un incrementeur de votes.
+Premièrement, nous devons ouvrir `app/choices/mutations/updateChoice.ts`,
+modifier le schéma zod et ajouter un incrémenteur de votes.
 
 ```diff
 const UpdateChoice = z
@@ -943,7 +943,7 @@ export const Question = () => {
   return (
 ```
 
-Par la suite nous devons modifier l'appel à `useQuery` pour inclure la
+Par la suite, nous devons modifier l'appel à `useQuery` pour inclure la
 fonction `refetch` que nous utilisons dans `handleVote`.
 
 ```diff
@@ -955,7 +955,7 @@ fonction `refetch` que nous utilisons dans `handleVote`.
 //...
 ```
 
-Finalement, disons à notre nouveau `button` d'exécuter cette fonction!
+Finalement, disons à notre nouveau `button` d'exécuter cette fonction !
 
 ```tsx
 <button onClick={() => handleVote(choice.id)}>Vote</button>
@@ -1025,7 +1025,7 @@ export const Question = () => {
 
 Si vous cliquez sur le boutton **Modifier** sur la page d'une question
 existante, vous verrez que le formulaire est le même que pour la création.
-Cette partie est donc déjà faite pour nous, il ne reste qu'a modifier
+Cette partie est donc déjà faite pour nous, il ne reste qu'à modifier
 notre mutation.
 
 Ouvrez `app/questions/mutations/updateQuestion.ts` et appliquez les
@@ -1077,7 +1077,7 @@ export default resolver.pipe(
 
 [`upsert`](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#upsert)
 est une opération spéciale qui pourrait se résumer en "Si cet élément
-existe déjà, modifiez le. Sinon créez le". C'est parfait pour notre cas de
+existe déjà, modifiez-le. Sinon créez-le". C'est parfait pour notre cas de
 figure puisque nous n'obligeons pas l'utilisateur à ajouter trois choix
 dès le départ. Si on veut en ajouter plus tard en modifiant la question,
 c'est ici qu'ils seront créés.
@@ -1086,14 +1086,14 @@ c'est ici qu'ils seront créés.
 
 Afin que la commande `yarn tsc` ou `git push` s'exécute sans erreur, vous
 devez supprimer `app/choices/mutations/createChoice.ts` (non utilisé) ou
-modifier le schema zod `CreateChoice` afin qu'il inclue les champs requis.
+modifier le schéma zod `CreateChoice` afin qu'il inclue les champs requis.
 
 ## Conclusion {#conclusion}
 
-🥳 Félicitations! Vous avez créé votre propre application Blitz!
+🥳 Félicitations ! Vous avez créé votre propre application Blitz !
 Amusez-vous à l'explorer ou à la partager avec vos amis. Maintenant que
 vous avez complété ce tutoriel, pourquoi ne pas essayer d'améliorer encore
-plus votre application de votes? Voici quelques suggestions :
+plus votre application de votes ? Voici quelques suggestions :
 
 - Ajouter du style (essayez `blitz install tailwind` ou
   `blitz install chakra-ui`)
@@ -1105,4 +1105,4 @@ Si vous voulez partager votre projet avec la communauté internationale de
 Blitz, vous ne trouverez pas de meilleur endroit que Discord.
 
 Visitez [discord.blitzjs.com](https://discord.blitzjs.com) et partagez le
-lien avec les autres membres dans le canal **#built-with-blitz**!
+lien avec les autres membres dans le canal **#built-with-blitz** !
