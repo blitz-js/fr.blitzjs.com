@@ -12,4 +12,5 @@ exports.allow = [
   "host",
   "host-hostess",
   "tard",
+  "daughter-son",
 ]
