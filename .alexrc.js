@@ -2,6 +2,7 @@
 exports.profanitySureness = 1
 
 exports.allow = [
+  "daughter-son",
   "he-she",
   "her-him",
   "herself-himself",
