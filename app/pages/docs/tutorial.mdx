@@ -15,8 +15,8 @@ blitz -v
 ```
 
 Si Blitz est bien installé, vous devriez voir le numéro de la version de
-votre installation. S'il ne l'est pas, vous devriez voir une erreur comme
-"command not found: blitz".
+votre installation. S'il ne l'est pas, vous devriez voir une erreur
+comme "command not found: blitz".
 
 ## Créez une nouvelle application {#creating-a-new-app}
 
@@ -216,11 +216,11 @@ allons continuer avec SQLite.
 Blitz vous permet de générer le code nécessaire pour une multitude de
 situations via la commande [`generate`](./cli-generate). Nous allons
 l'utiliser afin de générer deux modèles : `Question` et `Choice`. Une
-`Question` comprend la question sous forme de texte ainsi qu'une liste de
-choix de réponse. Un `Choice` contient le choix sous forme de texte, un
-nombre de votes et la question à laquelle il fait référence. Blitz
-s'occupe de générer un `id` unique, la date de création ainsi que la date
-de la dernière modification pour chacun des modèles.
+`Question` comprend la question sous forme de texte ainsi qu'une liste de choix de
+réponse. Un `Choice` contient le choix sous forme de texte, un nombre de votes et la
+question à laquelle il fait référence. Blitz s'occupe de générer un `id`
+unique, la date de création ainsi que la date de la dernière modification
+pour chacun des modèles.
 
 #### Premièrement, nous allons générer le modèle `Question` :
 
@@ -576,28 +576,27 @@ In order for `blitz console`, `yarn tsc` or `git push` to succeed, you'll
 need to delete `app/choices/mutations/createChoice.ts` (unused) or update
 the CreateChoice zod schema to include the required fields.
 
-## Playing with the Prisma database client {#playing-with-the-prisma-database-client}
+## Explorez le client de base de données Prisma {#playing-with-the-prisma-database-client}
 
-Now, let’s hop into the interactive Blitz shell and play around with the
-Prisma database client that Blitz gives you. To start the Blitz console,
-use this command:
+Maintenant, utilisons la console interactive Blitz pour essayer le client
+Prisma fourni par Blitz. Pour débuter, exécutez cette commande :
 
 ```sh
 blitz console
 ```
 
-Once you’re in the console, explore the database client:
+Lorsque c'est fait, essayez le client de base de données :
 
 ```sh
-# No questions are in the system yet.
+# Aucune Question n'a été créée pour l'instant :
 ⚡ > await db.question.findMany()
 []
 
-# Create a new Question:
+# Créez une nouvelle Question :
 ⚡ > let q = await db.question.create({data: {text: "What's new?"}})
 undefined
 
-# See the entire object:
+# Observer l'objet entier :
 ⚡ > q
 {
   id: 1,
@@ -606,11 +605,11 @@ undefined
   text: "What's new?"
 }
 
-# Or, access individual values on the object:
-⚡ > q.text
+# Ou accédez à une propriété individuelle de l'objet :
+⚡ > q.texte
 "What's new?"
 
-# Change values by using the update function:
+# Modifiez des valeurs en utilisant la fonction de mise à jour (update):
 ⚡ > q = await db.question.update({where: {id: 1}, data: {text: "What's up?"}})
 {
   id: 1,
@@ -619,7 +618,7 @@ undefined
   text: "What's up?"
 }
 
-# db.question.findMany() now displays all the questions in the database:
+# db.question.findMany() affiche maintenant toutes les questions enregistrées :
 ⚡ > await db.question.findMany()
 [
   {
@@ -850,8 +849,8 @@ sous le composant `Link` dans `QuestionsList` :
 // ...
 ```
 
-Vérifiez-le tout en visitant `/questions` avec votre navigateur. **Magie
-!**
+Vérifiez-le tout en visitant `/questions` avec votre navigateur.
+**Magie !**
 
 ## Permettez aux utilisateurs de voter ! {#let-people-vote-on-questions}
 
